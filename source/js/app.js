@@ -1,4 +1,4 @@
-import { Auth0Provider } from "@auth0/auth0-react";
+import { createAuth0Client } from "@auth0/auth0-spa-js";
 
 // DOM elements
 const loading = document.getElementById('loading');
@@ -27,7 +27,7 @@ async function initAuth0() {
       throw new Error('Auth0 configuration missing. Domain: ' + domain + ', ClientId: ' + clientId);
     }
 
-    auth0Client = await Auth0Provider({
+    auth0Client = await createAuth0Client({
       domain: domain,
       clientId: clientId,
       authorizationParams: {
