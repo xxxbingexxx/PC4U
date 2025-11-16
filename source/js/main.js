@@ -1,3 +1,4 @@
+console.log('Main script loaded!');
 document.addEventListener('DOMContentLoaded', () => {
     const showButton = document.getElementById('show-budget-btn');
     const budgetContainer = document.getElementById('budget-container');
