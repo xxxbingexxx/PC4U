@@ -17,8 +17,8 @@ let auth0Client;
 async function initAuth0() {
   try {
     // Debug: Check environment variables
-    const domain = import.meta.env.VITE_AUTH0_DOMAIN;
-    const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
+    const domain = import.meta.env.AUTH0_DOMAIN;
+    const clientId = import.meta.env.AUTH0_CLIENT_ID;
     
     console.log('Auth0 Domain:', domain);
     console.log('Auth0 Client ID:', clientId);
