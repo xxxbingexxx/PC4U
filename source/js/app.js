@@ -16,13 +16,27 @@ let auth0Client;
 // Initialize Auth0 client
 async function initAuth0() {
   try {
+    // Debug logging
+    const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+    const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
+    
+    console.log('Environment check:');
+    console.log('Domain:', domain);
+    console.log('ClientId:', clientId);
+    
+    if (!domain || !clientId) {
+      throw new Error('Auth0 configuration missing. Domain: ' + domain + ', ClientId: ' + clientId);
+    }
+
     auth0Client = await createAuth0Client({
-      domain: import.meta.env.VITE_AUTH0_DOMAIN,
-      clientId: import.meta.env.VITE_AUTH0_CLIENT_ID,
+      domain: domain,
+      clientId: clientId,
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin + '/login/login.html'
       }
     });
+
+    console.log('Auth0 client created successfully');
 
     // Check if user is returning from login
     if (window.location.search.includes('code=') && window.location.search.includes('state=')) {
@@ -32,6 +46,7 @@ async function initAuth0() {
     // Update UI based on authentication state
     await updateUI();
   } catch (err) {
+    console.error('Init error:', err);
     showError(err.message);
   }
 }
@@ -40,9 +55,9 @@ async function initAuth0() {
 async function handleRedirectCallback() {
   try {
     await auth0Client.handleRedirectCallback();
-    // Clean up the URL to remove query parameters
     window.history.replaceState({}, document.title, window.location.pathname);
   } catch (err) {
+    console.error('Callback error:', err);
     showError(err.message);
   }
 }
@@ -61,6 +76,7 @@ async function updateUI() {
     
     hideLoading();
   } catch (err) {
+    console.error('Update UI error:', err);
     showError(err.message);
   }
 }
@@ -104,8 +120,10 @@ async function displayProfile() {
 // Event handlers
 async function login() {
   try {
+    console.log('Login button clicked');
     await auth0Client.loginWithRedirect();
   } catch (err) {
+    console.error('Login error:', err);
     showError(err.message);
   }
 }
@@ -114,10 +132,11 @@ async function logout() {
   try {
     await auth0Client.logout({
       logoutParams: {
-        returnTo: window.location.origin
+        returnTo: window.location.origin + '/login/login.html'
       }
     });
   } catch (err) {
+    console.error('Logout error:', err);
     showError(err.message);
   }
 }
