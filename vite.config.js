@@ -12,6 +12,7 @@ export default defineConfig({
         about: resolve(__dirname, 'source/about/about.html'),
         help: resolve(__dirname, 'source/help/help.html'),
         builds: resolve(__dirname, 'source/builds/builds.html'),
+        results: resolve(__dirname, 'source/results/results.html'),
         login: resolve(__dirname, 'source/login/login.html'),
       }
     }
