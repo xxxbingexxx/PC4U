@@ -1,4 +1,4 @@
-import { createAuth0Client } from "@auth0/auth0-spa-js";
+import { createAuth0Client } from '@auth0/auth0-spa-js';
 
 // DOM elements
 const loading = document.getElementById('loading');
@@ -17,14 +17,12 @@ let auth0Client;
 async function initAuth0() {
   try {
     auth0Client = await createAuth0Client({
-      domain: domain,
-      clientId: clientId,
+      domain: import.meta.env.VITE_AUTH0_DOMAIN,
+      clientId: import.meta.env.VITE_AUTH0_CLIENT_ID,
       authorizationParams: {
-        redirect_uri: window.location.origin + "/login/login.html"
+        redirect_uri: window.location.origin
       }
     });
-
-    console.log('Auth0 client created successfully');
 
     // Check if user is returning from login
     if (window.location.search.includes('code=') && window.location.search.includes('state=')) {
@@ -34,7 +32,6 @@ async function initAuth0() {
     // Update UI based on authentication state
     await updateUI();
   } catch (err) {
-    console.error('Init error:', err);
     showError(err.message);
   }
 }
@@ -43,9 +40,9 @@ async function initAuth0() {
 async function handleRedirectCallback() {
   try {
     await auth0Client.handleRedirectCallback();
+    // Clean up the URL to remove query parameters
     window.history.replaceState({}, document.title, window.location.pathname);
   } catch (err) {
-    console.error('Callback error:', err);
     showError(err.message);
   }
 }
@@ -64,7 +61,6 @@ async function updateUI() {
     
     hideLoading();
   } catch (err) {
-    console.error('Update UI error:', err);
     showError(err.message);
   }
 }
@@ -108,11 +104,8 @@ async function displayProfile() {
 // Event handlers
 async function login() {
   try {
-    console.log('Login button clicked');
-    console.log('Auth0 client exists:', !!auth0Client);
     await auth0Client.loginWithRedirect();
   } catch (err) {
-    console.error('Login error:', err);
     showError(err.message);
   }
 }
@@ -121,11 +114,10 @@ async function logout() {
   try {
     await auth0Client.logout({
       logoutParams: {
-        returnTo: window.location.origin + "/login/login.html"
+        returnTo: window.location.origin
       }
     });
   } catch (err) {
-    console.error('Logout error:', err);
     showError(err.message);
   }
 }
