@@ -1,0 +1,27 @@
+{
+    "name":  "mission-vision-and-success",
+    "version":  "1.0.0",
+    "description":  "Temporary git testing",
+    "main":  "index.js",
+    "scripts":  {
+                    "preview":  "vite preview",
+                    "build":  "vite build",
+                    "dev":  "vite"
+                },
+    "repository":  {
+                       "type":  "git",
+                       "url":  "https://gitlab.cci.drexel.edu/cid/2526/fw1023/a6/mission-vision-and-success.git"
+                   },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "ISC",
+    "type":  "module",
+    "devDependencies":  {
+                            "vite":  "^7.2.2"
+                        },
+    "dependencies":  {
+                         "@auth0/auth0-spa-js":  "^2.8.0"
+                     }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title> PC4U </title>
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links nav-left">
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="builds/builds.html">Builds</a></li> 
+            </ul>
+            <img src="images/PC4Ulogo.png" alt="PC4U Logo" class="logo-img">
+            <ul class="nav-links nav-right">
+                <li><a href="login/login.html">About Us</a></li> 
+                <li><a href="help/help.html">Help</a></li> 
+            </ul>
+        </nav>
+    </header>
+    <main class="home-main-content">
+        <p class="tagline">FIND YOUR PERFECT PC</p>
+        <button type="button" id="show-budget-btn" class="get-started-btn">GET STARTED</button>
+        <div id="budget-container" class="budget-container hidden">
+            <span>
+                <input type="number" class="basic-slide" id="budget" placeholder="Enter your budget ($)" min="0" step="100"/><label for="budget">Budget</label>
+            </span>
+            <button type="button" id="show-type-btn" class="next-btn" disabled>NEXT</button>
+	    </div>
+        <div id="type-container" class="budget-container hidden">
+            <div class="select-wrapper">
+                <select name="type" id="type" required>
+                    <option value="" disabled selected>Select your use case</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="creative">Creative (Video/Photo Editing, 3D)</option>
+                    <option value="school-work">School/Office (Web, Docs, Email)</option>
+                    <option value="general-use">General Home Use (Media, Browsing)</option>
+                </select>
+            </div>
+            <button type="button" id="show-results-btn" class="next-btn" disabled>NEXT</button>
+	    </div>
+    </main>
+    <footer class="site-footer">
+        <img src="images/footer-img.png" alt="PC4U Footer" class="footer-img">
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title> Contact Us </title>
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links nav-left">
+                <li><a href="../index.html">Home</a></li> 
+                <li><a href="../builds/builds.html">Builds</a></li> 
+            </ul>
+            <img src="../images/PC4Ulogo.png" alt="PC4U Logo" class="logo-img">
+            <ul class="nav-links nav-right">
+                <li><a href="../about/about.html">About Us</a></li> 
+                <li><a href="../help/help.html">Help</a></li> 
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="contact-form-container">
+            <form name="contact-form" method="POST" netlify>
+                <h2>Get in Touch</h2>
+                <p>Have a question or need support? Fill out the form below.</p>
+                <div class="form-group">
+                    <label for="customer-name">Your Name</label>
+                    <input type="text" id="customer-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-email">Your Email</label>
+                    <input type="email" id="customer-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-message">Your Message</label>
+                    <textarea id="customer-message" name="message" rows="6" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <img src="../images/footer-img.png" alt="PC4U Footer" class="footer-img">
+    </footer>
+</body>
+</html>
