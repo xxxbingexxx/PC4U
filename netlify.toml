@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Serve all HTML files directly
+[[redirects]]
+  from = "/*"
+  to = "/:splat"
+  status = 200
+  force = false
+
+# Fallback for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
