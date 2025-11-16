@@ -17,17 +17,8 @@ let auth0Client;
 // Initialize Auth0 client
 async function initAuth0() {
   try {
-    // Debug logging
     const domain = import.meta.env.VITE_AUTH0_DOMAIN;
     const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-    
-    console.log('Environment check:');
-    console.log('Domain:', domain);
-    console.log('ClientId:', clientId);
-    
-    if (!domain || !clientId) {
-      throw new Error('Auth0 configuration missing. Domain: ' + domain + ', ClientId: ' + clientId);
-    }
 
     auth0Client = await createAuth0Client({
       domain: domain,
