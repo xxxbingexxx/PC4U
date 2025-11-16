@@ -16,17 +16,6 @@ let auth0Client;
 // Initialize Auth0 client
 async function initAuth0() {
   try {
-    // Debug: Check environment variables
-    const domain = import.meta.env.AUTH0_DOMAIN;
-    const clientId = import.meta.env.AUTH0_CLIENT_ID;
-    
-    console.log('Auth0 Domain:', domain);
-    console.log('Auth0 Client ID:', clientId);
-    
-    if (!domain || !clientId) {
-      throw new Error('Auth0 configuration missing. Domain: ' + domain + ', ClientId: ' + clientId);
-    }
-
     auth0Client = await createAuth0Client({
       domain: domain,
       clientId: clientId,
