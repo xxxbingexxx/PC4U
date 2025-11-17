@@ -15,7 +15,7 @@ let auth0Client;
 
 async function getAuth0Config() {
   try {
-    const response = await fetch('../js/auth_config.json'); 
+    const response = await fetch('/auth_config.json'); 
     
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
