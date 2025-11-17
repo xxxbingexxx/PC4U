@@ -4,68 +4,93 @@
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title> About Us </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
+            <img src="../images/logo2.png" alt="PC4U Logo" class="logo-img">
             <ul class="nav-links nav-left">
-                <li><a href="../index.html">Home</a></li> 
-                <li><a href="../builds/builds.html">Builds</a></li> 
+                <li><a href="../index.html">HOME</a></li> 
+                <li><a href="#build">BUILDS</a></li> 
+                <li><a href="#shop">SHOP</a></li>
+                <li><a href="#discussion">DISCUSSION</a></li> 
+                <li><a href="../about/about.html">ABOUT US</a></li> 
+                <li><a href="../help/help.html">SUPPORT</a></li> 
             </ul>
-            <img src="../images/PC4Ulogo.png" alt="PC4U Logo" class="logo-img">
-            <ul class="nav-links nav-right">
-                <li><a href="../about/about.html">About Us</a></li> 
-                <li><a href="../help/help.html">Help</a></li> 
+            <ul class="nav-links nav-left">
+                <li><a href="../login/login.html">LOG IN</a></li>
+                <li><a href="../login/login.html">REGISTER</a></li>
             </ul>
         </nav>
+        <div class="top-banner"></div>
     </header>
     <main>
         <section class="team-section">
-            <h2>Meet the PC4U Team</h2>
-            <ul class="team-list">
-                <li class="team-member-card">
-                    <img src="../images/zhibin-profile.jpg" class="profile">
-                    <h3>Zhibin Wang</h3>
-                    <p class="member-desc">Zhibin has strong passions on network security and information technology. He is also interested in building and upgrading PCs, which was why he built PC4U.</p>
-                    <a href="mailto:zw464@drexel.edu" class="member-email">zw464@drexel.edu</a>
-                    <p>
-                        <a href="https://www.linkedin.com/in/zhibin-wang-396318397" class="social-link"><img src="../images/linkedin.png" class="linkedin-logo"></a>
-                    </p>
-                </li>
-                <li class="team-member-card">
-                    <img src="../images/profile-placeholder.png" class="profile">
-                    <h3>Kenny Nguyen</h3>
-                    <p class="member-desc">DESCRIPTION.</p>
-                    <a href="mailto:kn664@drexel.edu" class="member-email">kn664@drexel.edu</a>
-                    <p>
-                        <a href="" class="social-link"><img src="../images/linkedin.png" class="linkedin-logo"></a>
-                    </p>
-                </li>
-                <li class="team-member-card">
-                    <img src="../images/mayeeduz-profile.jpeg" class="profile">
-                    <h3>Mayeeduz Zaman</h3>
-                    <p class="member-desc">Mayeeduz feels deeply on providing an affordable and accessible means to a computer to the average user. By building this website we can help those in need of a new computer!</p>
-                    <a href="mailto:mz589@drexel.edu" class="member-email">mz589@drexel.edu</a>
-                    <p>
-                        <a href="" class="social-link"><img src="../images/linkedin.png" class="linkedin-logo"></a>
-                    </p>
-                </li>
-                <li class="team-member-card">
-                    <img src="../images/pengyu-profile.jpg" class="profile">
-                    <h3>Pengyu Wang</h3>
-                    <p class="member-desc">Pengyu focuses on clean user experiences and thoughtful digital design.
-                        He believes that technology should feel intuitive and meaningful.</p>
-                    <a href="mailto:pw454@drexel.edu" class="member-email">pw454@drexel.edu</a>
-                    <p>
-                        <a href="https://www.linkedin.com/in/pengyu-wang-a95441339/" class="social-link"><img src="../images/linkedin.png" class="linkedin-logo"></a>
-                    </p>
-                </li>
-            </ul>
+            <div class="team-container">
+                <h2>Meet the PC4U Team</h2>
+                <ul class="team-list">
+                    <li class="team-member-card">
+                        <div class="card-image-header">
+                            <img src="../images/zhibin-profile.jpg" class="profile">
+                        </div>
+                        <div class="card-content">
+                            <h3>Zhibin Wang</h3>
+                            <p class="member-desc">Zhibin has strong passions on network security and information technology. He is also interested in building and upgrading PCs, which was why he built PC4U.</p>
+                            <a href="mailto:zw464@drexel.edu" class="member-email">zw464@drexel.edu</a>
+                            <p>
+                                <a href="https://www.linkedin.com/in/zhibin-wang-396318397" class="social-link"><img src="../images/linkedin.png" class="linkedin-logo"></a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="team-member-card">
+                        <div class="card-image-header">
+                            <img src="../images/profile-placeholder.png" class="profile">
+                        </div>
+                        <div class="card-content">
+                            <h3>Kenny Nguyen</h3>
+                            <p class="member-desc">DESCRIPTION.</p>
+                            <a href="mailto:kn664@drexel.edu" class="member-email">kn664@drexel.edu</a>
+                            <p>
+                                <a href="" class="social-link"><img src="../images/linkedin.png" class="linkedin-logo"></a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="team-member-card">
+                        <div class="card-image-header">
+                            <img src="../images/mayeeduz-profile.jpeg" class="profile">
+                        </div>
+                        <div class="card-content">
+                            <h3>Mayeeduz Zaman</h3>
+                            <p class="member-desc">Mayeeduz feels deeply on providing an affordable and accessible means to a computer to the average user. By building this website we can help those in need of a new computer!</p>
+                            <a href="mailto:mz589@drexel.edu" class="member-email">mz589@drexel.edu</a>
+                            <p>
+                                <a href="" class="social-link"><img src="../images/linkedin.png" class="linkedin-logo"></a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="team-member-card">
+                        <div class="card-image-header">
+                            <img src="../images/pengyu-profile.jpg" class="profile">
+                        </div>
+                        <div class="card-content">
+                            <h3>Pengyu Wang</h3>
+                            <p class="member-desc">Pengyu focuses on clean user experiences and thoughtful digital design.
+                                He believes that technology should feel intuitive and meaningful.</p>
+                            <a href="mailto:pw454@drexel.edu" class="member-email">pw454@drexel.edu</a>
+                            <p>
+                                <a href="https://www.linkedin.com/in/pengyu-wang-a95441339/" class="social-link"><img src="../images/linkedin.png" class="linkedin-logo"></a>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
     </main>
     <footer class="site-footer">
-        <img src="../images/footer-img.png" alt="PC4U Footer" class="footer-img">
     </footer>
 </body>
 </html>

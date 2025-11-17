@@ -4,47 +4,92 @@
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title> PC4U </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="layout.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
+            <img src="images/logo2.png" alt="PC4U Logo" class="logo-img">
             <ul class="nav-links nav-left">
-                <li><a href="index.html">Home</a></li> 
-                <li><a href="builds/builds.html">Builds</a></li> 
+                <li><a href="index.html">HOME</a></li> 
+                <li><a href="#build">BUILDS</a></li> 
+                <li><a href="#shop">SHOP</a></li>
+                <li><a href="#discussion">DISCUSSION</a></li> 
+                <li><a href="about/about.html">ABOUT US</a></li> 
+                <li><a href="help/help.html">SUPPORT</a></li> 
             </ul>
-            <img src="images/PC4Ulogo.png" alt="PC4U Logo" class="logo-img">
-            <ul class="nav-links nav-right">
-                <li><a href="login/login.html">About Us</a></li> 
-                <li><a href="help/help.html">Help</a></li> 
+            <ul class="nav-links nav-left">
+                <li><a href="login/login.html">LOG IN</a></li>
+                <li><a href="login/login.html">REGISTER</a></li>
             </ul>
         </nav>
+        <div class="top-banner"></div>
     </header>
     <main class="home-main-content">
-        <p class="tagline">FIND YOUR PERFECT PC</p>
-        <button type="button" id="show-budget-btn" class="get-started-btn">GET STARTED</button>
-        <div id="budget-container" class="budget-container hidden">
-            <span>
-                <input type="number" class="basic-slide" id="budget" placeholder="Enter your budget ($)" min="0" step="100"/><label for="budget">Budget</label>
-            </span>
-            <button type="button" id="show-type-btn" class="next-btn" disabled>NEXT</button>
-	    </div>
-        <div id="type-container" class="budget-container hidden">
-            <div class="select-wrapper">
-                <select name="type" id="type" required>
-                    <option value="" disabled selected>Select your use case</option>
-                    <option value="gaming">Gaming</option>
-                    <option value="creative">Creative (Video/Photo Editing, 3D)</option>
-                    <option value="school-work">School/Office (Web, Docs, Email)</option>
-                    <option value="general-use">General Home Use (Media, Browsing)</option>
-                </select>
+        <div id="intro-wrapper" class="fadeCollapse"> 
+            <div class="tagline">
+                <div class="tagline-one">SLOW COMPUTER?</div>
+                <div class="tagline-two">WE'LL TELL YOU WHAT TO UPGRADE.</div>
             </div>
-            <button type="button" id="show-results-btn" class="next-btn" disabled>NEXT</button>
-	    </div>
+            <div class="summary">
+                <div class="summary-one">We use your current computer specifications to recommend system upgrade for the most</div>
+                <div class="summary-two">affordable prices at any budget.</div>
+            </div>
+            <button id="show-budget-btn">Start</button>
+        </div>
+        <div id="hiddenOption" class="hideOption">
+            <div class="question-one">
+            How would you categorize yourself?
+            </div>
+                <div class="option-one-container">
+                    <div class="option-one">
+                        <div class="option-one-content">
+                            <h3>BEGINNER BUILD</h3>
+                            <p>Great Entry Build for Gaming and Entertainment</p>
+                        </div>
+                    </div>
+                    <div class="option-two">
+                        <div class="option-two-content">
+                            <h3>ADVANCE BUILD</h3>
+                            <p>More Performance for higher FPS Gaming and Moderate Work </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="info-banner">
+            <div class="card-container">
+                <h1 class="new-pc-header">NEW COMPUTER</h1>
+                <div class="card-one">
+                    <img src="images/photocard1.png">
+                    <div class="card-one-content">
+                        <h3>BEGINNER BUILD</h3>
+                        <p>Great Entry Build for Gaming and Entertainment</p>
+                    </div>
+                </div>
+                <div class="card-two">
+                    <img src="images/photocard2.png">
+                    <div class="card-two-content">
+                    <h3>ADVANCE BUILD</h3>
+                    <p>More Performance for higher FPS Gaming and Moderate Work </p>
+                </div>
+           </div>
+           <div class="card-three">
+                <img src="images/photocard3.png">
+                <div class="card-three-content">
+                    <h3>PROFESSIONAL BUILD</h3>
+                    <p>For Professional Work in Editing, 3D Rendering, and Gaming</p>
+                </div>
+           </div>
+        </div>
+        </div>
     </main>
     <footer class="site-footer">
-        <img src="images/footer-img.png" alt="PC4U Footer" class="footer-img">
+        <img src="" alt="PC4U Footer" class="footer-img">
     </footer>
-    <script type="module" src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

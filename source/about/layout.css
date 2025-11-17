@@ -4,74 +4,120 @@ html, body {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Dosis", sans-serif;
     background-color: #f3f3f3;
 
-    background-image: linear-gradient(to left, #007BFF, #D9534F);
+    background-image: linear-gradient(to left, #ffffff, #ffffff);
 }
 
 .navbar {
+    width: 100;
+    padding: 1rem 5;
+    background-color: #000000;
+    border-bottom: #1b1d24;
+    backdrop-filter: blur(15px);
+    margin-bottom: 0;
     display: flex;
-    justify-content: space-between; 
-    align-items: flex-end;
-    padding: 15px 30px;
-    background-color: #ffffff;
+    align-items: center;
+    justify-content: center; 
+    justify-items: space-between;
+    
+}
+
+nav span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95px;
+  height: 100%;
+  background: linear-gradient(45deg, #ffdd00 #eae4bc)
 }
 
 .navbar .nav-links {
   list-style-type: none;
   margin: 0;
-  padding: 10px 30px;
+  padding: 10px 10px;
   overflow: hidden;
   border: none;
   display: flex;
-  gap: 100px;
+  gap: 0px;
+  
 }
 
 .navbar .nav-links a {
   display: block;
   text-align: center;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: bold;
 }
 
 .navbar .nav-left a:hover {
-    color: #007BFF;
+    color: #ffb700;
 }
 
 .navbar .nav-right a:hover {
-    color: #D9534F;
+    color: #ffb700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  padding: 0 15px;
+  border-right: 1px solid #ffb700; 
+}
+
+nav li:last-child {
+  border-right: none; 
 }
 
 .logo-img {
-  max-height: 100px;
+  max-height: 45px;
   width: auto;   
   display: block;
   text-align: center;
-  margin: 10px 0;
+  margin: 0px 100px;
 }
 
 .site-footer {
-    text-align: center;
-    padding: 30px 0px;
+  width: 100;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;
+    background-color: #040506;
+    
 }
 
 .footer-img {
     max-height: 80px;
     width: auto;
 }
+
+.top-banner {
+    width: auto;
+    height: 30px;
+    background-color: #ffb700;
+    border: 1px solid #ffb700;
+}
 /* REUSE END */
 
 .team-section {
     margin: 0 auto;
     text-align: center;
+    width: 100%;
+    padding: 50px 0;
 }
 
 .team-section h2 {
-    font-size: 40px;
-    margin-bottom: 30px;
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 40px;
     color: #000000;
 }
 
@@ -83,27 +129,43 @@ body {
     gap: 50px;
     list-style: none;
     padding: 0;
+    margin-bottom: 40px;
 }
 
 .team-member-card {
     background: #ffffff;
     border-radius: 10px;
-    padding: 24px;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
 }
 
+.card-image-header {
+    background: #ffb700;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
 .team-member-card:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 10px 10px rgba(247, 53, 253, 0.4);
+    box-shadow: 0px 0px 10px 10px rgba(255, 183, 0, 0.4);
 }
 
 .team-member-card .profile {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 10%;
-    border: 4px solid #e0e0e0;
-    margin-bottom: 16px;
+    border: 6px solid #000000;
 }
 
 .team-member-card .linkedin-logo {
@@ -119,7 +181,7 @@ body {
 
 .team-member-card .member-desc {
     font-size: 14.4px;
-    color: #555;
+    color: #000000;
     margin-bottom: 16px;
 }
 

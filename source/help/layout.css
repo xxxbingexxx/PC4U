@@ -4,70 +4,114 @@ html, body {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Dosis", sans-serif;
     background-color: #f3f3f3;
 
-    background-image: linear-gradient(to left, #007BFF, #D9534F);
+    background-image: linear-gradient(to left, #ffffff, #ffffff);
 }
 
 .navbar {
+    width: 100;
+    padding: 1rem 5;
+    background-color: #000000;
+    border-bottom: #1b1d24;
+    backdrop-filter: blur(15px);
+    margin-bottom: 0;
     display: flex;
-    justify-content: space-between; 
-    align-items: flex-end;
-    padding: 15px 30px;
-    background-color: #ffffff;
+    align-items: center;
+    justify-content: center; 
+    justify-items: space-between;
+    
+}
+
+nav span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95px;
+  height: 100%;
+  background: linear-gradient(45deg, #ffdd00 #eae4bc)
 }
 
 .navbar .nav-links {
   list-style-type: none;
   margin: 0;
-  padding: 10px 30px;
+  padding: 10px 10px;
   overflow: hidden;
   border: none;
   display: flex;
-  gap: 100px;
+  gap: 0px;
+  
 }
 
 .navbar .nav-links a {
   display: block;
   text-align: center;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: bold;
 }
 
 .navbar .nav-left a:hover {
-    color: #007BFF;
+    color: #ffb700;
 }
 
 .navbar .nav-right a:hover {
-    color: #D9534F;
+    color: #ffb700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  padding: 0 15px;
+  border-right: 1px solid #ffb700; 
+}
+
+nav li:last-child {
+  border-right: none; 
 }
 
 .logo-img {
-  max-height: 100px;
+  max-height: 45px;
   width: auto;   
   display: block;
   text-align: center;
-  margin: 10px 0;
+  margin: 0px 100px;
 }
 
 .site-footer {
-    text-align: center;
+  width: 100;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;
+    background-color: #040506;
+    
 }
 
 .footer-img {
     max-height: 80px;
     width: auto;
 }
+
+.top-banner {
+    width: auto;
+    height: 30px;
+    background-color: #ffb700;
+    border: 1px solid #ffb700;
+}
 /* REUSE END */
 
 .contact-form-container {
     max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffb700;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
@@ -75,9 +119,14 @@ body {
 .contact-form-container h2 {
     text-align: center;
     margin-top: 0;
+    font-size: 60px;
+    color: #000000;
+    margin-bottom: 16px;
 }
+
 .contact-form-container p {
     text-align: center;
+    font-size: 20px;
     margin-bottom: 30px;
 }
 
@@ -111,17 +160,18 @@ body {
 .form-group button {
     width: 100%;
     padding: 15px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
+    background-color: #000000;
+    color: #FFD700;       
+    border: 1px solid #000000; 
     border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    font-family: "Dosis", sans-serif;
 }
 
-
 .form-group button:hover {
-    background-color: #0056b3;
+    background-color: #FFD700; 
+    color: #000000;             
 }
