@@ -17,8 +17,8 @@ let auth0Client;
 async function initAuth0() {
   try {
     auth0Client = await createAuth0Client({
-      domain: process.env.VITE_AUTH0_DOMAIN,
-      clientId: process.env.VITE_AUTH0_CLIENT_ID,
+      domain: PC4U_AUTH_CONFIG.domain,
+      clientId: PC4U_AUTH_CONFIG.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin
       }
