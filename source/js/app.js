@@ -15,9 +15,7 @@ let auth0Client;
 
 async function getAuth0Config() {
   try {
-    // The path here should be root-relative or relative to app.js, depending on your setup.
-    // Assuming root-relative path: /js/auth_config.json
-    const response = await fetch('source/js/auth_config.json'); 
+    const response = await fetch('../js/auth_config.json'); 
     
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
