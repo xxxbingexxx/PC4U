@@ -42,7 +42,7 @@ async function initAuth0() {
       domain: config.domain,
       clientId: config.clientId,
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin + "/login/login"
       }
     });
 
