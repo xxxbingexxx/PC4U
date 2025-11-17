@@ -1,4 +1,5 @@
 [build]
+  base = "source"
   command = """if [ -z "${VITE_AUTH0_DOMAIN}" ] || [ -z "${VITE_AUTH0_CLIENT_ID}" ]; then
             echo "Error: One or both environment variables (VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID) are not set or are empty."
             exit 1
