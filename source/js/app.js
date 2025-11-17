@@ -13,12 +13,36 @@ const profileContainer = document.getElementById('profile');
 
 let auth0Client;
 
+async function getAuth0Config() {
+  try {
+    // The path here should be root-relative or relative to app.js, depending on your setup.
+    // Assuming root-relative path: /js/auth_config.json
+    const response = await fetch('/js/auth_config.json'); 
+    
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    return await response.json();
+    
+  } catch (error) {
+    console.error('Failed to load Auth0 config:', error);
+    showError('Failed to load necessary configuration.');
+    return null; // Return null if fetching fails
+  }
+}
+
 // Initialize Auth0 client
 async function initAuth0() {
+  const config = await getAuth0Config();
+  if (!config) {
+    hideLoading();
+    return;
+  }
   try {
     auth0Client = await createAuth0Client({
-      domain: PC4U_AUTH_CONFIG.domain,
-      clientId: PC4U_AUTH_CONFIG.clientId,
+      domain: config.domain,
+      clientId: config.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin
       }
