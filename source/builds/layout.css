@@ -4,52 +4,106 @@ html, body {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Dosis", sans-serif;
     background-color: #f3f3f3;
-    background-image: linear-gradient(to left, #007BFF, #D9534F);
+
+    background-image: linear-gradient(to left, #ffffff, #ffffff);
 }
 
 .navbar {
+    width: 100;
+    padding: 1rem 5;
+    background-color: #000000;
+    border-bottom: #1b1d24;
+    backdrop-filter: blur(15px);
+    margin-bottom: 0;
     display: flex;
-    justify-content: space-between; 
     align-items: center;
-    padding: 15px 30px;
-    background-color: #ffffff;
+    justify-content: center; 
+    justify-items: space-between;
+    
+}
+
+nav span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95px;
+  height: 100%;
+  background: linear-gradient(45deg, #ffdd00 #eae4bc)
 }
 
 .navbar .nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 10px 30px;
-    display: flex;
-    gap: 100px;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 10px;
+  overflow: hidden;
+  border: none;
+  display: flex;
+  gap: 0px;
+  
 }
 
 .navbar .nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.1rem;
-    font-weight: bold;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
-.navbar .nav-left a:hover { color: #007BFF; }
-.navbar .nav-right a:hover { color: #D9534F; }
+.navbar .nav-left a:hover {
+    color: #ffb700;
+}
+
+.navbar .nav-right a:hover {
+    color: #ffb700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  padding: 0 15px;
+  border-right: 1px solid #ffb700; 
+}
+
+nav li:last-child {
+  border-right: none; 
+}
 
 .logo-img {
-    max-height: 100px;
-    width: auto;
-    margin: 10px 0;
+  max-height: 45px;
+  width: auto;   
+  display: block;
+  text-align: center;
+  margin: 0px 100px;
 }
 
-/* Footer */
 .site-footer {
-    text-align: center;
-    padding: 30px 0px;
+  width: 100;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;
+    background-color: #040506;
+    
 }
 
 .footer-img {
     max-height: 80px;
     width: auto;
+}
+
+.top-banner {
+    width: auto;
+    height: 30px;
+    background-color: #ffb700;
+    border: 1px solid #ffb700;
 }
 /* REUSE END */
 
