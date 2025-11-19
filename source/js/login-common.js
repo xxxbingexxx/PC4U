@@ -32,18 +32,22 @@ async function initAuth0Common() {
   if (!config) {
     hideLoading();
     return;
-    }
+  }
   try {
     auth0Client = await createAuth0Client({
       domain: config.domain,
       clientId: config.clientId,
+      authorizationParams: {
+        redirect_uri: window.location.origin + '/login/login.html'
+      },
+      cacheLocation: 'localstorage',
       useRefreshTokens: true,
     });
 
     await updateHeaderUI();
 
     if (loginBtn) {
-        logoutBtn.addEventListener('click', login);
+        loginBtn.addEventListener('click', login);
     }
 
     if (logoutBtn) {
@@ -99,7 +103,7 @@ function showLoggedOutHeader() {
 
 async function login() {
   try {
-    await auth0Client.login();
+    await auth0Client.loginWithRedirect();
   } catch (err) {
     showError(err.message);
   }

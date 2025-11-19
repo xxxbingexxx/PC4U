@@ -22,7 +22,6 @@ body {
     align-items: center;
     justify-content: center; 
     justify-items: space-between;
-    
 }
 
 nav span {
@@ -98,6 +97,26 @@ nav li:last-child {
 .footer-img {
     max-height: 80px;
     width: auto;
+}
+
+.nav-logout-btn {
+    background: none;
+    border: none;
+
+    font-family: 'Dosis', sans-serif;
+
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.nav-logout-btn:hover {
+    color: #ffb700;
 }
 /* REUSE END */
 
