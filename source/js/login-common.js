@@ -38,7 +38,7 @@ async function initAuth0Common() {
       domain: config.domain,
       clientId: config.clientId,
       authorizationParams: {
-        redirect_uri: window.location.origin + '/login/login.html'
+        redirect_uri: window.location.origin + '/login/login'
       },
       cacheLocation: 'localstorage',
       useRefreshTokens: true,

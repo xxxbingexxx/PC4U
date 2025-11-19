@@ -10,6 +10,9 @@ const loggedInSection = document.getElementById('logged-in');
 const loginBtn = document.getElementById('login-btn');
 const logoutBtn = document.getElementById('logout-btn');
 const profileContainer = document.getElementById('profile');
+const navLoggedIn = document.getElementById('nav-logged-in');
+const navLoggedOut = document.getElementById('nav-logged-out');
+const userDisplayName = document.getElementById('user-display-name');
 
 let auth0Client;
 
@@ -41,6 +44,7 @@ async function initAuth0() {
     auth0Client = await createAuth0Client({
       domain: config.domain,
       clientId: config.clientId,
+      cacheLocation: 'localstorage',
       authorizationParams: {
         redirect_uri: window.location.origin + "/login/login"
       }
@@ -78,7 +82,7 @@ async function updateUI() {
       showLoggedIn();
       await displayProfile();
     } else {
-      showLoggedOut();
+      login();
     }
     
     hideLoading();
@@ -118,6 +122,7 @@ async function displayProfile() {
         </div>
       </div>
     `;
+    userDisplayName.textContent = user.name || user.email || 'Welcome User';
   } catch (err) {
     console.error('Error displaying profile:', err);
   }
@@ -166,11 +171,17 @@ function showError(message) {
 function showLoggedIn() {
   loggedOutSection.style.display = 'none';
   loggedInSection.style.display = 'flex';
+
+  navLoggedOut.style.display = 'none';
+  navLoggedIn.style.display = 'flex';
 }
 
 function showLoggedOut() {
   loggedInSection.style.display = 'none';
   loggedOutSection.style.display = 'flex';
+
+  navLoggedOut.style.display = 'flex';
+  navLoggedIn.style.display = 'none';
 }
 
 // Event listeners
