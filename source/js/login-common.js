@@ -2,6 +2,7 @@ import { createAuth0Client } from '@auth0/auth0-spa-js';
 
 const loginBtn = document.getElementById('login-btn');
 const logoutBtn = document.getElementById('logout-btn');
+const registerBtn = document.getElementById('register-btn');
 const profileContainer = document.getElementById('profile');
 const navLoggedIn = document.getElementById('nav-logged-in');
 const navLoggedOut = document.getElementById('nav-logged-out');
@@ -52,6 +53,10 @@ async function initAuth0Common() {
 
     if (logoutBtn) {
         logoutBtn.addEventListener('click', logout);
+    }
+    
+    if (registerBtn) {
+        registerBtn.addEventListener('click', register);
     }
   } catch (err) {
     showError(err.message);
@@ -119,6 +124,19 @@ async function logout() {
     } catch (err) {
         console.error("Error during logout:", err);
     }
+}
+
+async function register() {
+  try {
+    await auth0Client.loginWithRedirect({
+      authorizationParams: {
+        screen_hint: 'signup',
+        redirect_uri: window.location.origin + '/login/login'
+      }
+    });
+  } catch (err) {
+    showError(err.message);
+  }
 }
 
 initAuth0Common();
