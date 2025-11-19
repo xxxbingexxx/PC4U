@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="layout.css" />
   </head>
   <body>
+    <header>
+        <nav class="navbar">
+            <img src="../images/logo2.png" alt="PC4U Logo" class="logo-img">
+            <ul class="nav-links nav-left">
+                <li><a href="../index.html">HOME</a></li> 
+                <li><a href="../builds/builds.html">BUILDS</a></li> 
+                <li><a href="#shop">SHOP</a></li>
+                <li><a href="#discussion">DISCUSSION</a></li> 
+                <li><a href="../about/about.html">ABOUT US</a></li> 
+                <li><a href="../help/help.html">SUPPORT</a></li> 
+            </ul>
+            <ul class="nav-links nav-left">
+                <ul class="nav-links nav-right" id="nav-logged-out">
+                  <li><a href="../login/login.html" class="nav-login-link">LOG IN</a></li>
+                  <li><a href="../login/login.html" class="nav-register-link">REGISTER</a></li>
+                </ul>
+                <div class="nav-links nav-right" id="nav-logged-in" style="display: none;">
+                  <li id="user-display-name" class="header-username"></li>
+                  <li><button id="logout-btn" class="nav-logout-btn">LOGOUT</button></li>
+                </div>
+            </ul>
+        </nav>
+        <div class="top-banner"></div>
+    </header>
     <div class="app-container">
       <!-- Loading State -->
       <div id="loading" class="loading-state">
@@ -23,11 +47,11 @@
       <!-- Main Content -->
       <div id="app" class="main-card-wrapper" style="display: none;">
         <img 
-          src="https://cdn.auth0.com/quantum-assets/dist/latest/logos/auth0/auth0-lockup-en-ondark.png" 
-          alt="Auth0 Logo" 
+          src="../images/logo2.png" 
+          alt="PC4U Logo" 
           class="auth0-logo"
         />
-        <h1 class="main-title">Welcome to Sample0</h1>
+        <h1 class="main-title">Welcome to PC4U</h1>
         
         <!-- Logged Out State -->
         <div id="logged-out" class="action-card">
@@ -38,9 +62,7 @@
         <!-- Logged In State -->
         <div id="logged-in" class="logged-in-section" style="display: none;">
           <div class="logged-in-message">✅ Successfully authenticated!</div>
-          <h2 class="profile-section-title">Your Profile</h2>
           <div id="profile" class="profile-card"></div>
-          <button id="logout-btn" class="button logout">Log Out</button>
         </div>
       </div>
     </div>

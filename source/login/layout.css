@@ -1,4 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+
+/* REUSE */
+html, body {
+    margin: 0;
+}
+
+.navbar {
+    width: 100;
+    padding: 1rem 5;
+    background-color: #000000;
+    border-bottom: #1b1d24;
+    backdrop-filter: blur(15px);
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    justify-items: space-between;
+    
+}
+
+nav span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95px;
+  height: 100%;
+  background: linear-gradient(45deg, #ffdd00 #eae4bc)
+}
+
+.navbar .nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 10px;
+  overflow: hidden;
+  border: none;
+  display: flex;
+  gap: 0px;
+  
+}
+
+.navbar .nav-links a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.navbar .nav-left a:hover {
+    color: #ffb700;
+}
+
+.navbar .nav-right a:hover {
+    color: #ffb700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  padding: 0 15px;
+  border-right: 1px solid #ffb700; 
+}
+
+nav li:last-child {
+  border-right: none; 
+}
+
+.logo-img {
+  max-height: 45px;
+  width: auto;   
+  display: block;
+  text-align: center;
+  margin: 0px 100px;
+}
+
+.site-footer {
+  width: 100;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;
+    background-color: #040506;
+    
+}
+
+.footer-img {
+    max-height: 80px;
+    width: auto;
+}
+
+.top-banner {
+    width: auto;
+    height: 30px;
+    background-color: #ffb700;
+    border: 1px solid #ffb700;
+}
+/* REUSE END */
 
 * {
   margin: 0;
@@ -7,10 +109,9 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Dosis', sans-serif;
   background-color: #1a1e27;
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   color: #e2e8f0;
@@ -22,8 +123,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   width: 100%;
+  margin-top: 24px;
   padding: 1rem;
 }
 
@@ -149,6 +250,7 @@ body {
 .button.logout {
   background-color: #fc8181;
   color: #1a1e27;
+  font-family: 'Dosis', sans-serif;
 }
 
 .button.logout:hover {
@@ -244,4 +346,47 @@ body {
   .action-card {
     padding: 2rem;
   }
+}
+
+/* Styling for the user display name */
+.header-username {
+    /* Style it to look like a link */
+    color: #ffd700; /* or your link color */
+    text-decoration: none;
+    padding: 0 10px; /* Matching the padding of your <li><a> elements */
+    font-size: 1rem; /* Matching your nav link font size */
+    font-weight: bold; /* Optional emphasis */
+    cursor: default; /* Change cursor to indicate it's not clickable (or make it clickable later) */
+    display: flex; /* Helps align with the button */
+    align-items: center;
+}
+
+/* Styling for the new Logout button */
+.nav-logout-btn {
+    background: none;
+    border: none;
+
+    font-family: 'Dosis', sans-serif;
+
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.nav-logout-btn:hover {
+    color: #ffd700; /* Example hover effect */
+}
+
+/* Ensure the logged-in container uses flex for inline display */
+#nav-logged-in {
+    display: flex;
+    align-items: center; /* Vertically align the name and button */
+    list-style: none; /* Remove list bullets if applicable */
+    padding: 0;
+    margin: 0;
 }
