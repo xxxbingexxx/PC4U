@@ -105,6 +105,37 @@ nav li:last-child {
     background-color: #ffb700;
     border: 1px solid #ffb700;
 }
+
+.header-username {
+    color: #ffd700;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: default;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logout-btn {
+    background: none;
+    border: none;
+
+    font-family: 'Dosis', sans-serif;
+
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.nav-logout-btn:hover {
+    color: #ffd700;
+}
 /* REUSE END */
 
 .team-section {
