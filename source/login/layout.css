@@ -348,20 +348,17 @@ body {
   }
 }
 
-/* Styling for the user display name */
 .header-username {
-    /* Style it to look like a link */
-    color: #ffd700; /* or your link color */
+    color: #ffd700;
     text-decoration: none;
-    padding: 0 10px; /* Matching the padding of your <li><a> elements */
-    font-size: 1rem; /* Matching your nav link font size */
-    font-weight: bold; /* Optional emphasis */
-    cursor: default; /* Change cursor to indicate it's not clickable (or make it clickable later) */
-    display: flex; /* Helps align with the button */
+    padding: 0 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: default;
+    display: flex;
     align-items: center;
 }
 
-/* Styling for the new Logout button */
 .nav-logout-btn {
     background: none;
     border: none;
@@ -379,7 +376,7 @@ body {
 }
 
 .nav-logout-btn:hover {
-    color: #ffd700; /* Example hover effect */
+    color: #ffd700;
 }
 
 /* Ensure the logged-in container uses flex for inline display */

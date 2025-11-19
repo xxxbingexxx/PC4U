@@ -99,6 +99,17 @@ nav li:last-child {
     width: auto;
 }
 
+.header-username {
+    color: #ffd700;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: default;
+    display: flex;
+    align-items: center;
+}
+
 .nav-logout-btn {
     background: none;
     border: none;
@@ -116,7 +127,7 @@ nav li:last-child {
 }
 
 .nav-logout-btn:hover {
-    color: #ffb700;
+    color: #ffd700;
 }
 /* REUSE END */
 
