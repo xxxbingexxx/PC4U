@@ -35,8 +35,8 @@ async function initAuth0Common() {
     }
   try {
     auth0Client = await createAuth0Client({
-      domain: import.meta.env.VITE_AUTH0_DOMAIN,
-      clientId: import.meta.env.VITE_AUTH0_CLIENT_ID,
+      domain: config.domain,
+      clientId: config.clientId,
       useRefreshTokens: true,
     });
 
