@@ -140,6 +140,115 @@ nav li:last-child {
     transform: scale(1.05);
 }
 
+.highend {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* RGB Glow for High-End PC */
+.highend {
+    position: relative;
+    overflow: hidden;
+}
+
+.highend::before {
+    content: "";
+    position: absolute;
+    inset: -6px;           /* extends glow outward */
+    border-radius: 16px;   /* matches your card */
+    z-index: 0;            /* BELOW the card content */
+    background: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff7f00,
+        #ffff00,
+        #00ff00,
+        #0000ff,
+        #4b0082,
+        #8f00ff
+    );
+    background-size: 400% 400%;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: rgbGlow 6s linear infinite;
+}
+
+.highend:hover::before {
+    opacity: 1;
+}
+
+/* Ensure the card sits ABOVE the glow */
+.highend > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes rgbGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* -----------------------------
+   BUDGET PC — GRAY GLOW
+----------------------------- */
+.budget {
+    position: relative;
+    overflow: visible !important;
+}
+
+.budget::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 16px;
+    z-index: 0;
+    background: #bfbfbf;          /* flat gray */
+    filter: blur(18px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.budget:hover::before {
+    opacity: 1;
+}
+
+.budget > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* -----------------------------
+   MID-TIER PC — BLUE GLOW
+----------------------------- */
+.midtier {
+    position: relative;
+    overflow: visible !important;
+}
+
+.midtier::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 16px;
+    z-index: 0;
+    background: #FFD700;          /* flat blue */
+    filter: blur(18px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.midtier:hover::before {
+    opacity: 1;
+}
+
+.midtier > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+
 /* FIX: 图片不再撑爆布局 */
 .build-img {
     width: 100%;
@@ -164,3 +273,4 @@ nav li:last-child {
     text-decoration: none;
     border-radius: 6px;
 }
+
