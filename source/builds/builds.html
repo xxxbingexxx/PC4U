@@ -20,11 +20,16 @@
                 <li><a href="../about/about.html">ABOUT US</a></li> 
                 <li><a href="../help/help.html">SUPPORT</a></li> 
             </ul>
-            <ul class="nav-links nav-left">
-                <li><a href="../login/login.html">LOG IN</a></li>
-                <li><a href="../login/login.html">REGISTER</a></li>
+            <ul class="nav-links nav-right" id="nav-logged-out">
+                <li><button id="login-btn" class="nav-logout-btn">LOG IN</button></li>
+                <li><button class="nav-logout-btn">REGISTER</button></li>
+            </ul>
+            <ul class="nav-links nav-right" id="nav-logged-in" style="display: none;">
+                <li id="user-display-name" class="header-username"></li>
+                <li><button id="logout-btn" class="nav-logout-btn">LOGOUT</button></li>
             </ul>
         </nav>
+        <script type="module" src="../js/login-common.js"></script>
         <div class="top-banner"></div>
     </header>
 
