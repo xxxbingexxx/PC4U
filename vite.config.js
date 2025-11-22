@@ -15,7 +15,7 @@ export default defineConfig({
         results: resolve(__dirname, 'source/results/results.html'),
         login: resolve(__dirname, 'source/login/login.html'),
         discussion: resolve(__dirname, 'source/discussion/discussion.html'),
-        createPost: resolve(__dirname, 'source/discussion/createPost.html'),
+        create_post: resolve(__dirname, 'source/discussion/create_post.html'),
         post: resolve(__dirname, 'source/discussion/post.html'),
       }
     }
