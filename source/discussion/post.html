@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PC4U - Post Detail </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../layout.css">
+    <link rel="stylesheet" href="discussion.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="../images/logo2.png" alt="PC4U Logo" class="logo-img">
+            <ul class="nav-links nav-left">
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="../builds/builds.html">BUILDS</a></li>
+                <li><a href="../index.html#shop">SHOP</a></li>
+                <li><a href="discussion.html">DISCUSSION</a></li>
+                <li><a href="../about/about.html">ABOUT US</a></li>
+                <li><a href="../help/help.html">SUPPORT</a></li>
+            </ul>
+            <ul class="nav-links nav-right" id="nav-logged-out">
+                <li><button id="login-btn" class="nav-logout-btn">LOG IN</button></li>
+                <li><button id="register-btn" class="nav-logout-btn">REGISTER</button></li>
+            </ul>
+            <ul class="nav-links nav-right" id="nav-logged-in" style="display: none;">
+                <li id="user-display-name" class="header-username"></li>
+                <li><button id="logout-btn" class="nav-logout-btn">LOGOUT</button></li>
+            </ul>
+        </nav>
+        <script type="module" src="../js/login-common.js"></script>
+        <div class="top-banner"></div>
+    </header>
+    <main class="discussion-main-content">
+        <div class="discussion-container">
+            <div class="back-link">
+                <a href="discussion.html">&larr; Back to Discussion Board</a>
+            </div>
+
+            <div id="post-detail-container">
+                <div class="loading-posts">Loading post...</div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../js/post-detail.js"></script>
+</body>
+
+</html>
