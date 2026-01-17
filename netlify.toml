@@ -1,11 +1,11 @@
 [build]
-  command = """if [ -z "${VITE_AUTH0_DOMAIN}" ] || [ -z "${VITE_AUTH0_CLIENT_ID}" ]; then
-            echo "Error: One or both environment variables (VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID) are not set or are empty."
+  command = """if [ -z "${AUTH0_DOMAIN}" ] || [ -z "${AUTH0_CLIENT_ID}" ]; then
+            echo "Error: One or both environment variables (AUTH0_DOMAIN, AUTH0_CLIENT_ID) are not set or are empty."
             exit 1
         fi
         
         # 1. Inject Auth0 Config: Create the JS file with environment variables.
-        printf '{"domain":"%s", "clientId":"%s"}' "${VITE_AUTH0_DOMAIN}" "${VITE_AUTH0_CLIENT_ID}" > source/public/auth_config.json &&
+        printf '{"domain":"%s", "clientId":"%s"}' "${AUTH0_DOMAIN}" "${AUTH0_CLIENT_ID}" > source/public/auth_config.json &&
         
         # 2. Run the Build: This command processes all your files.
         npm run build
