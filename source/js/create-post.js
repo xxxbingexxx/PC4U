@@ -20,10 +20,11 @@ async function init() {
 
 async function initAuth0() {
     try {
+        let config;
         if (!APP_CONFIG.USE_LOCAL_AUTH)
         {
             const response = await fetch('/auth_config.json');
-            const config = await response.json();
+            config = await response.json();
         }
 
         auth0Client = await createAuth0Client({

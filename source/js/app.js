@@ -36,9 +36,10 @@ async function getAuth0Config() {
 
 // Initialize Auth0 client
 async function initAuth0() {
+  let config;
   if (!APP_CONFIG.USE_LOCAL_AUTH)
   {
-    const config = await getAuth0Config();
+    config = await getAuth0Config();
     if (!config) {
       hideLoading();
       return;
