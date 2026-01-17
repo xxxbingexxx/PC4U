@@ -1,6 +1,7 @@
 
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 import { supabase } from './supabase-client.js';
+import { APP_CONFIG } from './app-config';
 
 // DOM Elements
 const createPostContainer = document.getElementById('create-post-container');
@@ -19,15 +20,19 @@ async function init() {
 
 async function initAuth0() {
     try {
-        // Reuse existing auth config logic (simplified for brevity, ideally imported)
-        const response = await fetch('/auth_config.json');
-        const config = await response.json();
+        if (!APP_CONFIG.USE_LOCAL_AUTH)
+        {
+            const response = await fetch('/auth_config.json');
+            const config = await response.json();
+        }
 
         auth0Client = await createAuth0Client({
-            domain: config.domain,
-            clientId: config.clientId,
+            domain: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_DOMAIN : config.domain,
+            clientId: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_CLIENT_ID : config.clientId,
             authorizationParams: {
-                redirect_uri: window.location.origin + '/discussion/create_post.html'
+                redirect_uri: APP_CONFIG.USE_LOCAL_AUTH
+                    ? window.location.origin + "/login/login.html"
+                    : window.location.origin + "/login/login"
             },
             cacheLocation: 'localstorage',
             useRefreshTokens: true,

@@ -1,6 +1,7 @@
 
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 import { supabase } from './supabase-client.js';
+import { APP_CONFIG } from './app-config.js';
 
 // DOM Elements
 const postDetailContainer = document.getElementById('post-detail-container');
@@ -26,17 +27,22 @@ async function init() {
 
 async function initAuth0() {
     try {
-        const response = await fetch('/auth_config.json');
-        const config = await response.json();
+        if (!APP_CONFIG.USE_LOCAL_AUTH)
+        {
+            const response = await fetch('/auth_config.json');
+            const config = await response.json();
+        }
 
         auth0Client = await createAuth0Client({
-            domain: config.domain,
-            clientId: config.clientId,
-            authorizationParams: {
-                redirect_uri: window.location.origin + '/discussion/post.html'
-            },
+            domain: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_DOMAIN : config.domain,
+            clientId: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_CLIENT_ID : config.clientId,
             cacheLocation: 'localstorage',
-            useRefreshTokens: true,
+            authorizationParams: {
+            redirect_uri: APP_CONFIG.USE_LOCAL_AUTH
+                ? window.location.origin + "/login/login.html"
+                : window.location.origin + "/login/login"
+            },
+        useRefreshTokens: true,
         });
 
         const isAuthenticated = await auth0Client.isAuthenticated();

@@ -1,4 +1,5 @@
 import { createAuth0Client } from '@auth0/auth0-spa-js';
+import { APP_CONFIG } from './app-config';
 
 const loginBtn = document.getElementById('login-btn');
 const logoutBtn = document.getElementById('logout-btn');
@@ -29,19 +30,24 @@ async function getAuth0Config() {
 
 // Initialize Auth0 client
 async function initAuth0Common() {
-  const config = await getAuth0Config();
-  if (!config) {
-    hideLoading();
-    return;
+  if (!APP_CONFIG.USE_LOCAL_AUTH)
+  {
+    const config = await getAuth0Config();
+    if (!config) {
+      hideLoading();
+      return;
+    } 
   }
   try {
     auth0Client = await createAuth0Client({
-      domain: config.domain,
-      clientId: config.clientId,
-      authorizationParams: {
-        redirect_uri: window.location.origin + '/login/login'
-      },
+      domain: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_DOMAIN : config.domain,
+      clientId: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_CLIENT_ID : config.clientId,
       cacheLocation: 'localstorage',
+      authorizationParams: {
+        redirect_uri: APP_CONFIG.USE_LOCAL_AUTH
+          ? window.location.origin + "/login/login.html"
+          : window.location.origin + "/login/login"
+      },
       useRefreshTokens: true,
     });
 
