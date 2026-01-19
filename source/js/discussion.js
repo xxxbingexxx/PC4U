@@ -100,7 +100,16 @@ async function loadPosts() {
 
         if (replyError) console.error("Error fetching replies:", replyError);
 
-        renderPostsList(posts, replies || []);
+        // Fetch reaction counts for all posts
+        const { data: reactions, error: reactionError } = await supabase
+            .from('post_reactions')
+            .select('post_id, reaction');
+
+        if (reactionError) {
+            console.error("Error fetching reactions:", reactionError);
+        }
+
+        renderPostsList(posts, replies || [], reactions || []);
 
     } catch (err) {
         console.error("Error loading posts:", err);
@@ -108,17 +117,24 @@ async function loadPosts() {
     }
 }
 
-function renderPostsList(posts, allReplies) {
+function renderPostsList(posts, allReplies, allReactions) {
     postsContainer.innerHTML = '';
 
     posts.forEach(post => {
         const replyCount = allReplies.filter(r => r.post_id === post.id).length;
-        const postElement = createPostListItem(post, replyCount);
+        const likesCount = allReactions.filter(
+            r => r.post_id === post.id && r.reaction === 'like'
+        ).length;
+
+        const dislikesCount = allReactions.filter(
+            r => r.post_id === post.id && r.reaction === 'dislike'
+        ).length;
+        const postElement = createPostListItem(post, replyCount, likesCount, dislikesCount);
         postsContainer.appendChild(postElement);
     });
 }
 
-function createPostListItem(post, replyCount) {
+function createPostListItem(post, replyCount, likesCount, dislikesCount) {
     const a = document.createElement('a');
     a.href = `post.html?id=${post.id}`;
     a.className = 'post-list-item';
@@ -130,6 +146,10 @@ function createPostListItem(post, replyCount) {
         <div class="post-list-meta">
             <span>by ${escapeHtml(post.author_name)} on ${date}</span>
             <span class="reply-count">${replyCount} Replies</span>
+        </div>
+        <div class="post-list-stats">
+            <span class="likes-count">❤️ ${likesCount}</span>
+            <span class="dislikes-count">👎 ${dislikesCount}</span>
         </div>
     `;
 

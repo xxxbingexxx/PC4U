@@ -73,9 +73,41 @@ async function loadPostDetail() {
             .eq('post_id', currentPostId)
             .order('created_at', { ascending: true });
 
+        
         if (replyError) throw replyError;
 
-        renderPostDetail(post, replies || []);
+
+        let likesCount = 0;
+        let dislikesCount = 0;
+        let userReaction = null;
+        // Fetch likes and dislikes
+        const { count: likes } = await supabase
+            .from('post_reactions')
+            .select('id', { count: 'exact' })
+            .eq('post_id', currentPostId)
+            .eq('reaction', 'like');
+        likesCount = likes || 0;
+        
+        const { count: dislikes } = await supabase
+            .from('post_reactions')
+            .select('id', { count: 'exact' })
+            .eq('post_id', currentPostId)
+            .eq('reaction', 'dislike');
+        dislikesCount = dislikes || 0;
+
+        // Fetch current user's reaction if logged in
+        if (user) {
+            const { data } = await supabase
+                .from('post_reactions')
+                .select('reaction')
+                .eq('post_id', currentPostId)
+                .eq('user_email', user.email)
+                .maybeSingle();
+            
+            if (data) userReaction = data.reaction;
+        }
+
+        renderPostDetail(post, replies || [], likesCount, dislikesCount, userReaction);
 
     } catch (err) {
         console.error("Error loading post:", err);
@@ -83,7 +115,7 @@ async function loadPostDetail() {
     }
 }
 
-function renderPostDetail(post, replies) {
+function renderPostDetail(post, replies, likesCount, dislikesCount, userReaction) {
     const date = new Date(post.created_at).toLocaleDateString() + ' ' + new Date(post.created_at).toLocaleTimeString();
     const isAuthor = user && user.email === post.author_email;
 
@@ -96,6 +128,17 @@ function renderPostDetail(post, replies) {
     if (isAuthor) {
         deleteBtnHtml = `<button class="delete-btn" id="delete-post-btn">Delete Post</button>`;
     }
+
+    const upActive = userReaction === 'like' ? 'active' : '';
+    const downActive = userReaction === 'dislike' ? 'active' : '';
+    const upIcon = userReaction === 'like' ? '❤️' : '🤍';
+
+    const postVoteHtml = `
+        <div class="vote-bar" data-type="post" data-post-id="${post.id}">
+            <button type="button" class="vote-btn up ${upActive}" id="like-btn">${upIcon} ${likesCount}</button>
+            <button type="button" class="vote-btn down ${downActive}" id="dislike-btn">👎 ${dislikesCount}</button>
+        </div>
+    `;
 
     let repliesHtml = replies.map(reply => {
         const isReplyAuthor = user && user.email === reply.author_email;
@@ -131,6 +174,7 @@ function renderPostDetail(post, replies) {
             </div>
             <div class="post-content-large">${escapeHtml(post.content)}</div>
             ${imageHtml}
+            ${postVoteHtml}
             
             <div class="replies-section">
                 <h3>Replies (${replies.length})</h3>
@@ -153,6 +197,12 @@ function renderPostDetail(post, replies) {
         document.querySelectorAll('.delete-reply-btn').forEach(btn => {
             btn.addEventListener('click', handleDeleteReply);
         });
+
+        const likeBtn = document.getElementById("like-btn");
+        const dislikeBtn = document.getElementById("dislike-btn");
+
+        if (likeBtn) likeBtn.addEventListener("click", () => handleReaction("like"));
+        if (dislikeBtn) dislikeBtn.addEventListener("click", () => handleReaction("dislike"));
     }
 }
 
@@ -244,6 +294,61 @@ function escapeHtml(text) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+async function handleReaction(type) {
+    if (!user) return; // must be logged in
+
+    try {
+        // Check if user already reacted
+        const { data: existing, error: fetchError } = await supabase
+            .from('post_reactions')
+            .select('id,reaction')
+            .eq('post_id', currentPostId)
+            .eq('user_email', user.email)
+            .maybeSingle(); // use maybeSingle so no row doesn't throw
+
+        if (fetchError) throw fetchError;
+
+        if (existing) {
+            if (existing.reaction === type) {
+                // User clicked the same reaction → delete to revert
+                const { error: deleteError } = await supabase
+                    .from('post_reactions')
+                    .delete()
+                    .eq('id', existing.id);
+                if (deleteError) throw deleteError;
+
+            } else {
+                // User clicked the other reaction → update
+                const { error: updateError } = await supabase
+                    .from('post_reactions')
+                    .update({ reaction: type })
+                    .eq('id', existing.id);
+                if (updateError) throw updateError;
+            }
+
+        } else {
+            // No existing reaction → insert new
+            const { error: insertError } = await supabase
+                .from('post_reactions')
+                .insert([
+                    {
+                        post_id: currentPostId,
+                        user_email: user.email,
+                        reaction: type
+                    }
+                ]);
+            if (insertError) throw insertError;
+        }
+
+        // Reload post reactions to update counts/UI
+        await loadPostDetail();
+
+    } catch (err) {
+        console.error('Error handling reaction:', err);
+        alert('Failed to update reaction.');
+    }
 }
 
 init();

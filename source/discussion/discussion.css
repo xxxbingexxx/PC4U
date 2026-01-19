@@ -336,3 +336,46 @@ h2 {
     font-size: 0.8rem;
     font-weight: bold;
 }
+
+/* Voting UI */
+.vote-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    user-select: none;
+}
+
+.vote-btn {
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: transform 0.12s, background-color 0.12s, border-color 0.12s;
+    font-family: "Dosis", sans-serif;
+}
+
+.vote-btn:hover {
+    transform: translateY(-1px);
+    border-color: #ffb700;
+}
+
+.vote-score {
+    font-weight: bold;
+    min-width: 28px;
+    text-align: center;
+    color: #333;
+}
+
+/* Active states */
+.vote-btn.up.active {
+    border-color: #ffb700;
+    background-color: #fff8e1;
+}
+
+.vote-btn.down.active {
+    border-color: #ff4444;
+    background-color: #ffecec;
+}
