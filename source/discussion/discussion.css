@@ -379,3 +379,44 @@ h2 {
     border-color: #ff4444;
     background-color: #ffecec;
 }
+
+/* [Begin] Author: Zhibin Wang, 01/31/26 */
+.discussion-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+/* [End] Author: Zhibin Wang, 01/31/26 */
+
+.search-post-btn {
+    /*For Pengyu*/
+    font-family: "Dosis", sans-serif;
+}
+
+.search-post-btn:hover {
+    /*For Pengyu*/
+    cursor: pointer;
+}
+
+.discussion-controls-filter {
+    /*For Pengyu*/
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.discussion-controls-search-bar {
+    /*For Pengyu*/
+}
+
+#post-search-input {
+    /*For Pengyu*/
+    font-family: "Dosis", sans-serif;
+}
+
+.post-sort-select {
+    /*For Pengyu*/
+    font-family: "Dosis", sans-serif;
+}

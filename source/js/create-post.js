@@ -1,7 +1,6 @@
 
-import { createAuth0Client } from '@auth0/auth0-spa-js';
+import { user } from './login-common.js'
 import { supabase } from './supabase-client.js';
-import { APP_CONFIG } from './app-config';
 
 // DOM Elements
 const createPostContainer = document.getElementById('create-post-container');
@@ -9,48 +8,14 @@ const loginPrompt = document.getElementById('login-prompt');
 const loginLink = document.getElementById('login-link');
 const createPostForm = document.getElementById('create-post-form');
 
-let auth0Client;
-let user = null;
-
 // Initialize
 async function init() {
-    await initAuth0();
-    setupEventListeners();
-}
-
-async function initAuth0() {
-    try {
-        let config;
-        if (!APP_CONFIG.USE_LOCAL_AUTH)
-        {
-            const response = await fetch('/auth_config.json');
-            config = await response.json();
-        }
-
-        auth0Client = await createAuth0Client({
-            domain: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_DOMAIN : config.domain,
-            clientId: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_CLIENT_ID : config.clientId,
-            authorizationParams: {
-                redirect_uri: APP_CONFIG.USE_LOCAL_AUTH
-                    ? window.location.origin + "/login/login.html"
-                    : window.location.origin + "/login/login"
-            },
-            cacheLocation: 'localstorage',
-            useRefreshTokens: true,
-        });
-
-        const isAuthenticated = await auth0Client.isAuthenticated();
-
-        if (isAuthenticated) {
-            user = await auth0Client.getUser();
-            showLoggedInState();
-        } else {
-            showLoggedOutState();
-        }
-
-    } catch (error) {
-        console.error("Auth init error:", error);
+    if (user) {
+        showLoggedInState();
+    } else {
+        showLoggedOutState();
     }
+    setupEventListeners();
 }
 
 function showLoggedInState() {

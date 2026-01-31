@@ -9,7 +9,8 @@ const navLoggedIn = document.getElementById('nav-logged-in');
 const navLoggedOut = document.getElementById('nav-logged-out');
 const userDisplayName = document.getElementById('user-display-name');
 
-let auth0Client;
+export let auth0Client;
+export let user = null;
 
 async function getAuth0Config() {
   try {
@@ -29,7 +30,7 @@ async function getAuth0Config() {
 }
 
 // Initialize Auth0 client
-async function initAuth0Common() {
+export async function initAuth0Common() {
   let config;
   if (!APP_CONFIG.USE_LOCAL_AUTH)
   {
@@ -65,6 +66,12 @@ async function initAuth0Common() {
     if (registerBtn) {
         registerBtn.addEventListener('click', register);
     }
+
+    const isAuthenticated = await auth0Client.isAuthenticated();
+    if (isAuthenticated) {
+      user = await auth0Client.getUser();
+    }
+
   } catch (err) {
     showError(err.message);
   }

@@ -41,10 +41,36 @@
             <div class="discussion-header-row"
                 style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                 <h1>Discussion Board</h1>
-                <a href="create_post.html" id="create-post-btn" class="submit-btn"
-                    style="text-decoration: none; display: none;">+ Create New Post</a>
             </div>
-
+            <!-- [Begin] Author: Zhibin Wang, 01/31/26-->
+            <div class="discussion-controls">
+                <div class="discussion-controls-filter">
+                    <div class="discussion-controls-search-bar">
+                        <input 
+                            type="text" 
+                            id="post-search-input"
+                            placeholder="Search posts by title or content"
+                            aria-label="Search posts"
+                        />
+                        <button id="post-search-btn" class="search-post-btn">
+                            Search
+                        </button>
+                    </div>
+                    <select id="post-sort-select" class="post-sort-select">
+                        <option value="latest">Latest</option>
+                        <option value="most_likes">Most Likes</option>
+                        <option value="most_comments">Most Comments</option>
+                    </select>
+                </div>
+                <a 
+                    href="create_post.html"
+                    id="create-post-btn"
+                    class="submit-btn"
+                    style="text-decoration: none; display: none;">
+                    + Create New Post
+                </a>
+            </div>
+            <!-- [End] Author: Zhibin Wang, 01/31/26-->
             <div id="login-prompt" class="login-prompt">
                 <p>Please log in to create a post.</p>
             </div>

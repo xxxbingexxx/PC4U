@@ -1,14 +1,14 @@
-
-import { createAuth0Client } from '@auth0/auth0-spa-js';
+import { user } from './login-common.js'
 import { supabase } from './supabase-client.js';
-import { APP_CONFIG } from './app-config.js';
+import { escapeHtml, fetchPosts, fetchUserReaction, fetchPostReplies } from './posts-common.js';
 
 // DOM Elements
 const postDetailContainer = document.getElementById('post-detail-container');
 
-let auth0Client;
-let user = null;
 let currentPostId = null;
+let post = null;
+let replies = [];
+let userReaction = null;
 
 // Initialize
 async function init() {
@@ -20,102 +20,27 @@ async function init() {
         postDetailContainer.innerHTML = '<div class="error-message">Post not found.</div>';
         return;
     }
-
-    await initAuth0();
     await loadPostDetail();
-}
-
-async function initAuth0() {
-    try {
-        let config;
-        if (!APP_CONFIG.USE_LOCAL_AUTH)
-        {
-            const response = await fetch('/auth_config.json');
-            config = await response.json();
-        }
-
-        auth0Client = await createAuth0Client({
-            domain: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_DOMAIN : config.domain,
-            clientId: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_CLIENT_ID : config.clientId,
-            cacheLocation: 'localstorage',
-            authorizationParams: {
-            redirect_uri: APP_CONFIG.USE_LOCAL_AUTH
-                ? window.location.origin + "/login/login.html"
-                : window.location.origin + "/login/login"
-            },
-        useRefreshTokens: true,
-        });
-
-        const isAuthenticated = await auth0Client.isAuthenticated();
-        if (isAuthenticated) {
-            user = await auth0Client.getUser();
-        }
-    } catch (error) {
-        console.error("Auth init error:", error);
-    }
 }
 
 async function loadPostDetail() {
     try {
-        // Fetch post
-        const { data: post, error: postError } = await supabase
-            .from('posts')
-            .select('*')
-            .eq('id', currentPostId)
-            .single();
-
-        if (postError) throw postError;
-
-        // Fetch replies
-        const { data: replies, error: replyError } = await supabase
-            .from('replies')
-            .select('*')
-            .eq('post_id', currentPostId)
-            .order('created_at', { ascending: true });
-
-        
-        if (replyError) throw replyError;
-
-
-        let likesCount = 0;
-        let dislikesCount = 0;
-        let userReaction = null;
-        // Fetch likes and dislikes
-        const { count: likes } = await supabase
-            .from('post_reactions')
-            .select('id', { count: 'exact' })
-            .eq('post_id', currentPostId)
-            .eq('reaction', 'like');
-        likesCount = likes || 0;
-        
-        const { count: dislikes } = await supabase
-            .from('post_reactions')
-            .select('id', { count: 'exact' })
-            .eq('post_id', currentPostId)
-            .eq('reaction', 'dislike');
-        dislikesCount = dislikes || 0;
-
-        // Fetch current user's reaction if logged in
-        if (user) {
-            const { data } = await supabase
-                .from('post_reactions')
-                .select('reaction')
-                .eq('post_id', currentPostId)
-                .eq('user_email', user.email)
-                .maybeSingle();
-            
-            if (data) userReaction = data.reaction;
-        }
-
-        renderPostDetail(post, replies || [], likesCount, dislikesCount, userReaction);
-
+        const [postData, repliesData, reaction] = await Promise.all([
+            fetchPosts({ postId: currentPostId }),
+            fetchPostReplies(currentPostId),
+            fetchUserReaction(currentPostId, user?.email)
+        ]);
+        post = postData;
+        replies = repliesData;
+        userReaction = reaction;
+        renderPostDetail();
     } catch (err) {
         console.error("Error loading post:", err);
         postDetailContainer.innerHTML = '<div class="error-message">Failed to load post. It may have been deleted.</div>';
     }
 }
 
-function renderPostDetail(post, replies, likesCount, dislikesCount, userReaction) {
+function renderPostDetail() {
     const date = new Date(post.created_at).toLocaleDateString() + ' ' + new Date(post.created_at).toLocaleTimeString();
     const isAuthor = user && user.email === post.author_email;
 
@@ -135,8 +60,8 @@ function renderPostDetail(post, replies, likesCount, dislikesCount, userReaction
 
     const postVoteHtml = `
         <div class="vote-bar" data-type="post" data-post-id="${post.id}">
-            <button type="button" class="vote-btn up ${upActive}" id="like-btn">${upIcon} ${likesCount}</button>
-            <button type="button" class="vote-btn down ${downActive}" id="dislike-btn">👎 ${dislikesCount}</button>
+            <button type="button" class="vote-btn up ${upActive}" id="like-btn">${upIcon} ${post.likes_count}</button>
+            <button type="button" class="vote-btn down ${downActive}" id="dislike-btn">👎 ${post.dislikes_count}</button>
         </div>
     `;
 
@@ -284,16 +209,6 @@ async function handleReplySubmit(e) {
         btn.disabled = false;
         btn.textContent = 'Reply';
     }
-}
-
-function escapeHtml(text) {
-    if (!text) return '';
-    return text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
 }
 
 async function handleReaction(type) {
