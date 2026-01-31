@@ -1,4 +1,4 @@
-import { user } from './login-common.js'
+import { user, userReady } from './login-common.js'
 import { supabase } from './supabase-client.js';
 import { escapeHtml, fetchPosts, fetchUserReaction, fetchPostReplies } from './posts-common.js';
 
@@ -12,6 +12,7 @@ let userReaction = null;
 
 // Initialize
 async function init() {
+    await userReady;
     // Get Post ID from URL
     const urlParams = new URLSearchParams(window.location.search);
     currentPostId = urlParams.get('id');

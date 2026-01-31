@@ -1,5 +1,5 @@
 
-import { user } from './login-common.js'
+import { user, userReady } from './login-common.js'
 import { supabase } from './supabase-client.js';
 
 // DOM Elements
@@ -10,6 +10,7 @@ const createPostForm = document.getElementById('create-post-form');
 
 // Initialize
 async function init() {
+    await userReady;
     if (user) {
         showLoggedInState();
     } else {

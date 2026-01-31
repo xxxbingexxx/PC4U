@@ -12,6 +12,8 @@ const userDisplayName = document.getElementById('user-display-name');
 export let auth0Client;
 export let user = null;
 
+export let userReady = null;
+
 async function getAuth0Config() {
   try {
     const response = await fetch('/auth_config.json'); 
@@ -30,51 +32,54 @@ async function getAuth0Config() {
 }
 
 // Initialize Auth0 client
-export async function initAuth0Common() {
-  let config;
-  if (!APP_CONFIG.USE_LOCAL_AUTH)
-  {
-    config = await getAuth0Config();
-    if (!config) {
-      hideLoading();
-      return;
-    } 
-  }
-  try {
-    auth0Client = await createAuth0Client({
-      domain: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_DOMAIN : config.domain,
-      clientId: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_CLIENT_ID : config.clientId,
-      cacheLocation: 'localstorage',
-      authorizationParams: {
-        redirect_uri: APP_CONFIG.USE_LOCAL_AUTH
-          ? window.location.origin + "/login/login.html"
-          : window.location.origin + "/login/login"
-      },
-      useRefreshTokens: true,
-    });
+async function initAuth0Common() {
+  if (userReady) return userReady;
 
-    await updateHeaderUI();
-
-    if (loginBtn) {
-        loginBtn.addEventListener('click', login);
+  userReady = (async () => {
+    let config;
+    if (!APP_CONFIG.USE_LOCAL_AUTH)
+    {
+      config = await getAuth0Config();
+      if (!config) {
+        hideLoading();
+        return;
+      } 
     }
+    try {
+      auth0Client = await createAuth0Client({
+        domain: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_DOMAIN : config.domain,
+        clientId: APP_CONFIG.USE_LOCAL_AUTH ? import.meta.env.VITE_AUTH0_CLIENT_ID : config.clientId,
+        cacheLocation: 'localstorage',
+        authorizationParams: {
+          redirect_uri: APP_CONFIG.USE_LOCAL_AUTH
+            ? window.location.origin + "/login/login.html"
+            : window.location.origin + "/login/login"
+        },
+        useRefreshTokens: true,
+      });
 
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', logout);
-    }
-    
-    if (registerBtn) {
-        registerBtn.addEventListener('click', register);
-    }
+      await updateHeaderUI();
 
-    const isAuthenticated = await auth0Client.isAuthenticated();
-    if (isAuthenticated) {
-      user = await auth0Client.getUser();
-    }
+      if (loginBtn) {
+          loginBtn.addEventListener('click', login);
+      }
 
-  } catch (err) {
-    showError(err.message);
-  }
+      if (logoutBtn) {
+          logoutBtn.addEventListener('click', logout);
+      }
+      
+      if (registerBtn) {
+          registerBtn.addEventListener('click', register);
+      }
+
+      const isAuthenticated = await auth0Client.isAuthenticated();
+      if (isAuthenticated) {
+        user = await auth0Client.getUser();
+      }
+    } catch (err) {
+      showError(err.message);
+    }
+  })();
 }
 
 async function updateHeaderUI() {

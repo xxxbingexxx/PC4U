@@ -1,5 +1,5 @@
 
-import { user } from './login-common.js'
+import { user, userReady } from './login-common.js'
 import { escapeHtml, fetchPosts } from './posts-common.js';
 
 // DOM Elements
@@ -10,6 +10,7 @@ const postsContainer = document.getElementById('posts-container');
 
 // Initialize
 async function init() {
+    await userReady;
     if (user) {
         showLoggedInState();
     } else {
