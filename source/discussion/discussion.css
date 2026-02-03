@@ -390,33 +390,76 @@ h2 {
 }
 /* [End] Author: Zhibin Wang, 01/31/26 */
 
-.search-post-btn {
-    /*For Pengyu*/
-    font-family: "Dosis", sans-serif;
-}
+/* [Begin] Author: Pengyu Wang, 01/31/26
+   Purpose: Style discussion search bar + filter dropdown to match PC4U UI, including hover/focus states and responsive layout.
+*/
 
-.search-post-btn:hover {
-    /*For Pengyu*/
-    cursor: pointer;
+.discussion-controls-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .discussion-controls-filter {
-    /*For Pengyu*/
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.discussion-controls-search-bar {
-    /*For Pengyu*/
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 #post-search-input {
-    /*For Pengyu*/
-    font-family: "Dosis", sans-serif;
+  font-family: "Dosis", sans-serif;
+  padding: 8px 10px;
+  border: 1px solid #2b2b2b;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111;
+  min-width: 220px;
+  height: 34px;
 }
 
 .post-sort-select {
-    /*For Pengyu*/
-    font-family: "Dosis", sans-serif;
+  font-family: "Dosis", sans-serif;
+  padding: 8px 10px;
+  border: 1px solid #2b2b2b;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111;
+  min-width: 140px;
+  height: 34px;
 }
+
+.search-post-btn {
+  font-family: "Dosis", sans-serif;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #2b2b2b;
+  background: #f4b400;
+  color: #111;
+  height: 34px;
+  cursor: pointer;
+}
+
+.search-post-btn:hover {
+  background: #d99d00;
+}
+
+#post-search-input:focus,
+.post-sort-select:focus {
+  outline: none;
+  border-color: #f4b400;
+  box-shadow: 0 0 0 3px rgba(244, 180, 0, 0.25);
+}
+
+@media (max-width: 600px) {
+  .discussion-controls-search-bar,
+  .discussion-controls-filter {
+    width: 100%;
+  }
+
+  #post-search-input,
+  .post-sort-select {
+    min-width: 100%;
+  }
+}
+
+/* [End] Author: Pengyu Wang, 01/31/26 */
