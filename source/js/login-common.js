@@ -1,3 +1,4 @@
+/* Mod by Zhibin Wang, 01/31/26 */
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 import { APP_CONFIG } from './app-config';
 

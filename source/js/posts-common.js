@@ -1,11 +1,22 @@
+/* [Begin] Author: Zhibin Wang, 01/31/26 */
 import { supabase } from './supabase-client.js';
 
-export async function fetchPosts({ postId = null, order = 'desc' } = {}) {
+/* Mod by Zhibin Wang, 02/07/26 */
+export async function fetchPosts({ postId = null, order = 'desc', searchQuery = '', sortFilter = 'created_at'} = {}) {
     let query = supabase.from('posts_with_stats').select('*');
+    if (postId) {
+        const { data, error } = await query.eq('id', postId).single();
+        if (error) throw error;
+        return data;
+    }
 
-    if (postId) query = query.eq('id', postId).single();
-    query = query.order('created_at', { ascending: order === 'asc' });
+    if (searchQuery.trim())
+    {
+        const term = `%${searchQuery.trim()}%`;
+        query = query.or(`title.ilike.${term},content.ilike.${term},author_email.ilike.${term}`);
+    }
 
+    query = query.order(sortFilter, { ascending: order === 'asc' });
     const { data, error } = await query;
     if (error) throw error;
     return data;
@@ -55,3 +66,4 @@ export function escapeHtml(text) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
+/* [End] Author: Zhibin Wang, 01/31/26 */

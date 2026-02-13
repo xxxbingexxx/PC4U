@@ -46,20 +46,27 @@
             <div class="discussion-controls">
                 <div class="discussion-controls-filter">
                     <div class="discussion-controls-search-bar">
+                            <!-- [Begin] Author: Pengyu Wang, 02/07/26-->
+                        <button id="post-search-back-btn" class="back-search-btn" disabled aria-label="Back to all posts">
+                            Back
+                        </button>
+                        <!-- [End] Author: Pengyu Wang, 02/07/26-->
+                        
                         <input 
                             type="text" 
                             id="post-search-input"
                             placeholder="Search posts by title or content"
                             aria-label="Search posts"
                         />
-                        <button id="post-search-btn" class="search-post-btn">
+                        <button id="post-search-btn" class="search-post-btn" disabled>
                             Search
                         </button>
                     </div>
                     <select id="post-sort-select" class="post-sort-select">
-                        <option value="latest">Latest</option>
-                        <option value="most_likes">Most Likes</option>
-                        <option value="most_comments">Most Comments</option>
+                        <!-- Mod by Zhibin Wang, 02/07/26 -->
+                        <option value="created_at">Latest</option>
+                        <option value="likes_count">Most Likes</option>
+                        <option value="reply_count">Most Comments</option>
                     </select>
                 </div>
                 <a 

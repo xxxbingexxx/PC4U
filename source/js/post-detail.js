@@ -1,3 +1,4 @@
+/* Mod by Zhibin Wang, 01/31/26 */
 import { user, userReady } from './login-common.js'
 import { supabase } from './supabase-client.js';
 import { escapeHtml, fetchPosts, fetchUserReaction, fetchPostReplies } from './posts-common.js';
@@ -89,13 +90,13 @@ function renderPostDetail() {
         </form>
     ` : '<div class="login-prompt-small">Please log in to reply.</div>';
 
+    /* Mod by Zhibin Wang, 02/07/26 */
     postDetailContainer.innerHTML = `
         <div class="post-card full-post">
             <div class="post-header">
                 <h1 class="post-title-large">${escapeHtml(post.title)}</h1>
                 <div class="post-meta-row">
-                    <span class="post-meta">by ${escapeHtml(post.author_name)} on ${date}</span>
-                    ${deleteBtnHtml}
+                    <span class="post-meta">by ${escapeHtml(post.author_name)} on ${date} ${deleteBtnHtml}</span>
                 </div>
             </div>
             <div class="post-content-large">${escapeHtml(post.content)}</div>
