@@ -36,11 +36,13 @@ export async function fetchUserReaction(postId, userEmail) {
     return data?.reaction ?? null;
 }
 
+/* Mod by Zhibin Wang, 02/14/26*/
 export async function fetchPostReplies(postId) {
     const { data, error } = await supabase
         .from('replies')
         .select(`
             id,
+            parent_id,
             content,
             author_name,
             author_email,

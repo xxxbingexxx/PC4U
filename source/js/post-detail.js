@@ -42,6 +42,43 @@ async function loadPostDetail() {
     }
 }
 
+/*[Begin] Author: Zhibin Wang, 02/14/26*/
+function renderReply(reply, depth = 0) {
+    const isReplyAuthor = user && user.email === reply.author_email;
+    const replyDeleteBtn = isReplyAuthor ?
+        `<button class="delete-reply-btn" data-id="${reply.id}">Delete</button>` : '';
+    
+    const replyActionBtn = user ? 
+        `<button class="nested-reply-btn" data-id="${reply.id}">Reply</button>` : '';
+
+    const hasChildren = reply.children && reply.children.length > 0;
+    const collapseBtnHtml = hasChildren ? 
+        `<span class="collapse-btn" data-id="${reply.id}"></span>` : 
+        `<span class="collapse-spacer"></span>`;
+
+    const margin = (depth > 10 || depth == 0) ? 0 : 20;
+
+    const childrenHtml = reply.children.map(child => renderReply(child, depth + 1)).join('');
+
+    return `
+        <div class="reply-container" id="container-${reply.id}" style="margin-left: ${margin}px">
+            <div class="reply" id="reply-${reply.id}">
+                <div class="reply-header">
+                    ${collapseBtnHtml}
+                    <span class="reply-meta">${escapeHtml(reply.author_name)}</span>
+                    <div class="reply-actions">${replyActionBtn} ${replyDeleteBtn}</div>
+                </div>
+                <div class="reply-content">${escapeHtml(reply.content)}</div>
+                <div id="reply-form-container-${reply.id}"></div>
+            </div>
+            <div class="child-replies">
+                ${childrenHtml}
+            </div>
+        </div>
+    `;
+}
+/*[End] Author: Zhibin Wang, 02/14/26*/
+
 function renderPostDetail() {
     const date = new Date(post.created_at).toLocaleDateString() + ' ' + new Date(post.created_at).toLocaleTimeString();
     const isAuthor = user && user.email === post.author_email;
@@ -67,21 +104,9 @@ function renderPostDetail() {
         </div>
     `;
 
-    let repliesHtml = replies.map(reply => {
-        const isReplyAuthor = user && user.email === reply.author_email;
-        const replyDeleteBtn = isReplyAuthor ?
-            `<button class="delete-reply-btn" data-id="${reply.id}">Delete</button>` : '';
-
-        return `
-            <div class="reply" id="reply-${reply.id}">
-                <div class="reply-header">
-                    <span class="reply-meta">${escapeHtml(reply.author_name)}</span>
-                    ${replyDeleteBtn}
-                </div>
-                <div class="reply-content">${escapeHtml(reply.content)}</div>
-            </div>
-        `;
-    }).join('');
+    /* Mod by Zhibin Wang, 02/14/26 */
+    const replyTree = buildReplyTree(replies);
+    const repliesHtml = replyTree.map(rootReply => renderReply(rootReply)).join('');
 
     const replyFormHtml = user ? `
         <form id="reply-form" class="reply-form">
@@ -130,6 +155,36 @@ function renderPostDetail() {
 
         if (likeBtn) likeBtn.addEventListener("click", () => handleReaction("like"));
         if (dislikeBtn) dislikeBtn.addEventListener("click", () => handleReaction("dislike"));
+
+        /* Mod by Zhibin Wang, 02/14/26 */
+        document.querySelectorAll('.nested-reply-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const parentId = e.target.dataset.id;
+                const container = document.getElementById(`reply-form-container-${parentId}`);
+                
+                if (container.innerHTML !== '') {
+                    container.innerHTML = '';
+                    return;
+                }
+
+                container.innerHTML = `
+                    <form class="reply-form" data-parent-id="${parentId}">
+                        <input type="text" placeholder="Write a reply..." required>
+                        <button type="submit" class="reply-btn">Send</button>
+                    </form>
+                `;
+
+                container.querySelector('form').addEventListener('submit', (e) => handleReplySubmit(e, parentId));
+            });
+        });
+
+        document.querySelectorAll('.collapse-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const replyId = e.target.dataset.id;
+                const container = document.getElementById(`container-${replyId}`);
+                container.classList.toggle('collapsed');
+            });
+        });
     }
 }
 
@@ -165,20 +220,23 @@ async function handleDeleteReply(e) {
 
         if (error) throw error;
 
-        // Remove from DOM
-        document.getElementById(`reply-${replyId}`).remove();
+        /* Mod by Zhibin Wang, 02/14/26 */
+        loadPostDetail();
     } catch (err) {
         console.error("Error deleting reply:", err);
         alert("Failed to delete reply.");
     }
 }
 
-async function handleReplySubmit(e) {
+/* Mod by Zhibin Wang, 02/14/26 */
+async function handleReplySubmit(e, parentId = null) {
     e.preventDefault();
     if (!user) return;
 
-    const input = document.getElementById('reply-content');
-    const btn = e.target.querySelector('button');
+    /* Mod by Zhibin Wang, 02/14/26 */
+    const form = e.currentTarget;
+    const input = form.querySelector('input');
+    const btn = form.querySelector('button');
     const content = input.value.trim();
 
     if (!content) return;
@@ -192,6 +250,8 @@ async function handleReplySubmit(e) {
             .insert([
                 {
                     post_id: currentPostId,
+                    /* Mod by Zhibin Wang, 02/14/26 */
+                    parent_id: parentId,
                     content,
                     author_name: user.name || user.email || 'Anonymous',
                     author_email: user.email
@@ -267,5 +327,28 @@ async function handleReaction(type) {
         alert('Failed to update reaction.');
     }
 }
+
+/*[Begin] Author: Zhibin Wang, 02/14/26*/
+function buildReplyTree(flatReplies) {
+    const map = {};
+    const tree = [];
+
+    flatReplies.forEach(reply => {
+        map[reply.id] = { ...reply, children: [] };
+    });
+
+    flatReplies.forEach(reply => {
+        if (reply.parent_id) {
+            if (map[reply.parent_id]) {
+                map[reply.parent_id].children.push(map[reply.id]);
+            }
+        } else {
+            tree.push(map[reply.id]);
+        }
+    });
+
+    return tree;
+}
+/*[End] Author: Zhibin Wang, 02/14/26*/
 
 init();

@@ -81,6 +81,17 @@ function setupEventListeners() {
             draftQuery = searchInput.value.trim();
             searchBtn.disabled = (draftQuery === '');
         });
+
+        /*[Begin] Author: Zhibin Wang, 02/14/26*/
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !searchBtn.disabled) {
+                e.preventDefault();
+                appliedQuery = draftQuery?.trim() || null;
+                updateBackButtonState();
+                handleSearch();
+            }
+        });
+        /*[End] Author: Zhibin Wang, 02/14/26*/
     }
 
     if (sortSelect) {
