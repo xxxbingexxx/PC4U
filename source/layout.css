@@ -4,6 +4,14 @@ html, body {
     margin: 0;
 }
 
+/* [Begin] Author: Zhibin Wang, 02/21/26 */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+/* [End] Author: Zhibin Wang, 02/21/26 */
+
 body {
     font-family: "Dosis", sans-serif;
     background-color: #f3f3f3;
@@ -320,6 +328,10 @@ nav li:last-child {
   color: #ffffff;
   font-size: 20px;
 }
-
-
-
+/* [Begin] Author: Pengyu Wang, 02/21/26 */
+.build-link{
+  display: contents;
+  text-decoration: none;
+  color: inherit;
+}
+/* [End] Author: Pengyu Wang, 02/21/26 */

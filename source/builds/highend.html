@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-End Performance PC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="layout.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="../images/logo2.png" alt="PC4U Logo" class="logo-img">
+            <ul class="nav-links nav-left">
+                <li><a href="../index.html">HOME</a></li> 
+                <li><a href="../builds/builds.html">BUILDS</a></li> 
+                <li><a href="#shop">SHOP</a></li>
+                <li><a href="../discussion/discussion.html">DISCUSSION</a></li> 
+                <li><a href="../about/about.html">ABOUT US</a></li> 
+                <li><a href="../help/help.html">SUPPORT</a></li> 
+            </ul>
+            <ul class="nav-links nav-right" id="nav-logged-out">
+                <li><button id="login-btn" class="nav-logout-btn">LOG IN</button></li>
+                <li><button id="register-btn" class="nav-logout-btn">REGISTER</button></li>
+            </ul>
+            <ul class="nav-links nav-right" id="nav-logged-in" style="display: none;">
+                <li id="user-display-name" class="header-username"></li>
+                <li><button id="logout-btn" class="nav-logout-btn">LOGOUT</button></li>
+            </ul>
+        </nav>
+        <script type="module" src="../js/login-common.js"></script>
+        <div class="top-banner"></div>
+    </header>
+
+    <main>
+        <section class="builds-section">
+            <h2>High-End Performance PC</h2>
+            <p>Top-tier performance for gaming and productivity.</p>
+
+            <h3>Recommended Parts</h3>
+            <ul class="build-list">
+                <li class="build-card highend">
+                    <p><strong>CPU:</strong> AMD Ryzen 7 7800X3D</p>
+                    <p><strong>GPU:</strong> NVIDIA RTX 4080 Super</p>
+                    <p><strong>RAM:</strong> 32GB DDR5</p>
+                    <p><strong>Storage:</strong> 2TB NVMe SSD</p>
+                    <p><strong>Motherboard:</strong> X670</p>
+                    <p><strong>PSU:</strong> 850W 80+ Gold</p>
+                    <p><strong>Case:</strong> Premium airflow case</p>
+                </li>
+            </ul>
+
+            <a href="../builds/builds.html" class="details-btn">← Back to Builds</a>
+        </section>
+    </main>
+</body>
+</html>

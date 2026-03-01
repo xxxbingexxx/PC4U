@@ -3,6 +3,14 @@ html, body {
     margin: 0;
 }
 
+/* [Begin] Author: Zhibin Wang, 02/21/26 */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+/* [End] Author: Zhibin Wang, 02/21/26 */
+
 body {
     font-family: "Dosis", sans-serif;
     background-color: #f3f3f3;
@@ -305,3 +313,27 @@ nav li:last-child {
     border-radius: 6px;
 }
 
+.build-page p,
+.build-page h2,
+.build-page h3,
+.build-page li {
+    font-size: 16px !important;  /* ensures all text inside build pages is readable */
+    line-height: 1.5;            /* improves readability */
+}
+
+/* Headings styling for hierarchy */
+.build-page h2 {
+    font-size: 2rem !important;  /* ~32px for main titles */
+    margin-bottom: 0.5rem;
+}
+
+.build-page h3 {
+    font-size: 1.5rem !important; /* ~24px for subheadings */
+    margin-bottom: 0.5rem;
+}
+
+/* Optional spacing for paragraphs and list items */
+.build-page p,
+.build-page li {
+    margin: 0.25rem 0;
+}

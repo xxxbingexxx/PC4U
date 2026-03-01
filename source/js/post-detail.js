@@ -1,7 +1,8 @@
 /* Mod by Zhibin Wang, 01/31/26 */
 import { user, userReady } from './login-common.js'
 import { supabase } from './supabase-client.js';
-import { escapeHtml, fetchPosts, fetchUserReaction, fetchPostReplies } from './posts-common.js';
+import { escapeHtml, linkifySafe, fetchPosts, fetchUserReaction, fetchPostReplies } from './posts-common.js';
+
 
 // DOM Elements
 const postDetailContainer = document.getElementById('post-detail-container');
@@ -32,15 +33,26 @@ async function loadPostDetail() {
             fetchPostReplies(currentPostId),
             fetchUserReaction(currentPostId, user?.email)
         ]);
+
+        if (!postData) {
+            postDetailContainer.innerHTML = '<div class="error-message">Post not found.</div>';
+            return;
+        }
+
         post = postData;
-        replies = repliesData;
+        replies = repliesData || [];
         userReaction = reaction;
+
         renderPostDetail();
+
     } catch (err) {
         console.error("Error loading post:", err);
-        postDetailContainer.innerHTML = '<div class="error-message">Failed to load post. It may have been deleted.</div>';
+        postDetailContainer.innerHTML =
+            '<div class="error-message">Failed to load post. It may have been deleted.</div>';
     }
 }
+
+
 
 /*[Begin] Author: Zhibin Wang, 02/14/26*/
 function renderReply(reply, depth = 0) {
@@ -68,7 +80,8 @@ function renderReply(reply, depth = 0) {
                     <span class="reply-meta">${escapeHtml(reply.author_name)}</span>
                     <div class="reply-actions">${replyActionBtn} ${replyDeleteBtn}</div>
                 </div>
-                <div class="reply-content">${escapeHtml(reply.content)}</div>
+                <div class="reply-content">${linkifySafe(escapeHtml(reply.content || ''))}</div>
+
                 <div id="reply-form-container-${reply.id}"></div>
             </div>
             <div class="child-replies">
@@ -124,7 +137,8 @@ function renderPostDetail() {
                     <span class="post-meta">by ${escapeHtml(post.author_name)} on ${date} ${deleteBtnHtml}</span>
                 </div>
             </div>
-            <div class="post-content-large">${escapeHtml(post.content)}</div>
+            <div class="post-content-large">${linkifySafe(escapeHtml(post.content || ''))}</div>
+
             ${imageHtml}
             ${postVoteHtml}
             

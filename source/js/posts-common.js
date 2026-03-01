@@ -69,3 +69,18 @@ export function escapeHtml(text) {
         .replace(/'/g, "&#039;");
 }
 /* [End] Author: Zhibin Wang, 01/31/26 */
+/**
+ * Convert URLs in text into clickable links safely
+ * Handles null or undefined text
+ */
+export function linkifySafe(text) {
+    if (!text) return ''; // handle null/empty
+    return text.replace(/(https?:\/\/[^\s]+)/g, function(url) {
+        try {
+            new URL(url); // validate URL
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+        } catch (_) {
+            return url; // leave invalid URLs as plain text
+        }
+    });
+}

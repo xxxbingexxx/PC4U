@@ -45,6 +45,26 @@ function showLoggedOutState() {
     if (createPostBtn) createPostBtn.style.display = 'none';
     if (loginPrompt) loginPrompt.style.display = 'block';
 }
+// Validate URL safely
+function isValidUrl(string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
+
+// Convert URLs in text to clickable links safely
+function linkifySafe(text) {
+    if (!text) return '';
+    return text.replace(/(https?:\/\/[^\s]+)/g, function(url) {
+        return isValidUrl(url)
+            ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+            : url;
+    });
+}
+
 
 /*[Begin] Author: Pengyu Wang, 02/07/26*/
 function updateBackButtonState() {
@@ -195,6 +215,7 @@ function getSnippetAroundMatch(text, query, snippetLength = 100) {
 
     /* Mod by Zhibin Wang, 02/07/26 */
     snippet = highlightMatch(snippet, query);
+    snippet = linkifySafe(snippet); // convert URLs into hyperlinks
     if (start > 0) snippet = '...' + snippet;
     if (end < text.length) snippet = snippet + '...';
 
@@ -207,7 +228,8 @@ function highlightMatch(text, query) {
     const escapedQuery = query.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
     const regex = new RegExp(`(${escapedQuery})`, 'gi');
 
-    return escapeHtml(text).replace(regex, '<mark>$1</mark>');
+    return text.replace(regex, '<mark>$1</mark>');
+
 }
 /*[End] Author: Zhibin Wang, 02/07/26*/
 

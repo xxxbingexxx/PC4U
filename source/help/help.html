@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="layout.css">
+    <!-- [Begin] Author: Zhibin Wang, 02/21/2026 -->
+    <link rel="stylesheet" href="help.css">
+    <!-- [End] Author: Zhibin Wang, 02/21/2026 -->
 </head>
 <body>
     <header>
@@ -34,28 +37,318 @@
         <div class="top-banner"></div>
     </header>
     <main>
-        <div class="contact-form-container">
-            <form name="contact-form" method="POST" netlify>
-                <h2>Get in Touch</h2>
-                <p>Have a question or need support? Fill out the form below.</p>
-                <div class="form-group">
-                    <label for="customer-name">Your Name</label>
-                    <input type="text" id="customer-name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="customer-email">Your Email</label>
-                    <input type="email" id="customer-email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="customer-message">Your Message</label>
-                    <textarea id="customer-message" name="message" rows="6" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Send Message</button>
-                </div>
-            </form>
+        <!-- [Begin]
+            Author: Zhibin Wang, 02/21/2026
+            Assisted by Claude (Anthropic) for User Guide structure and content
+            Original contact form authored by Zhibin Wang
+        -->
+        <div class="guide-hero">
+            <h1>HELP <span>&</span> SUPPORT</h1>
+            <p>Learn how to use PC4U and get the most out of your experience.</p>
         </div>
+        <div class="guide-tabs">
+            <button class="guide-tab active" onclick="showTab('getting-started', event)">GETTING STARTED</button>
+            <button class="guide-tab" onclick="showTab('home-survey', event)">HOME SURVEY</button>
+            <button class="guide-tab" onclick="showTab('builds', event)">BUILDS</button>
+            <button class="guide-tab" onclick="showTab('shop', event)">SHOP</button>
+            <button class="guide-tab" onclick="showTab('discussion', event)">DISCUSSION</button>
+            <button class="guide-tab" onclick="showTab('contact', event)">CONTACT</button>
+        </div>
+        <div class="guide-content">
+            <div class="guide-section active" id="tab-getting-started">
+                <h2>Getting Started</h2>
+                <p class="section-subtitle">How to access PC4U and set up your account.</p>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">1</div>
+                        <h3>Visit the Site</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Open your browser and navigate to the PC4U website. You will land on the home page, where you can explore the site as a visitor or log in to access full features.</p>
+                        <img src="../images/help_homepage.png" alt="Screenshot: PC4U Home Page" class="screenshot">
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">2</div>
+                        <h3>Create an Account or Log In</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Click <strong>LOG IN</strong> or <strong>REGISTER</strong> in the top-right corner of the navigation bar. Authentication is handled securely through Auth0.</p>
+                        <img src="../images/help_login.png" alt="Screenshot: PC4U Login Button" class="screenshot">
+                        <ul class="steps-list">
+                            <li>Click <strong>REGISTER</strong> to create a new account with your email.</li>
+                            <li>Click <strong>LOG IN</strong> if you already have an account.</li>
+                            <li>Once logged in, your name will appear in the top-right corner of the navbar.</li>
+                            <li>Click <strong>LOGOUT</strong> to sign out at any time.</li>
+                        </ul>
+                        <img src="../images/help_login_modal.png" alt="Screenshot: PC4U Login Modal" class="screenshot">
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">3</div>
+                        <h3>Navigate the Site</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Use the navigation bar at the top to move between sections of the site:</p>
+                        <div class="capabilities-grid">
+                            <div class="capability-item"><span class="cap-icon">🏠</span> <strong>Home</strong> — PC survey</div>
+                            <div class="capability-item"><span class="cap-icon">🖥️</span> <strong>Builds</strong> — Sample PC builds</div>
+                            <div class="capability-item"><span class="cap-icon">🛒</span> <strong>Shop</strong> — Parts store</div>
+                            <div class="capability-item"><span class="cap-icon">💬</span> <strong>Discussion</strong> — Community board</div>
+                            <div class="capability-item"><span class="cap-icon">👥</span> <strong>About Us</strong> — Team info</div>
+                            <div class="capability-item"><span class="cap-icon">🆘</span> <strong>Support</strong> — This page</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-section" id="tab-home-survey">
+                <h2>Home Survey <span class="wip-badge">Work in Progress</span></h2>
+                <p class="section-subtitle">A step-by-step questionnaire to get personalized PC upgrade recommendations.</p>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">1</div>
+                        <h3>How It Works</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>The home page features a step-by-step survey that asks about your current PC specifications and usage habits. Based on your answers, PC4U will generate a personalized upgrade recommendation.</p>
+                        <p>⚠️ <strong>This feature is currently under development</strong> and is not yet fully functional. Check back for updates.</p>
+                        <img src="../images/help_survey.png" alt="Screenshot: PC4U Home Survey" class="screenshot">
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">2</div>
+                        <h3>What to Expect (When Complete)</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Once the feature is live, here is the expected experience:</p>
+                        <ul class="steps-list">
+                            <li>Answer a series of questions about your current PC hardware (CPU, GPU, RAM, storage, etc.).</li>
+                            <li>Tell us how you use your PC — gaming, video editing, general use, etc.</li>
+                            <li>Receive a tailored recommendation for what to upgrade and why.</li>
+                            <li>See estimated prices and where to buy the recommended parts.</li>
+                            <li>Get a suggested timeline for your next upgrade.</li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-label">Example Input</div>
+                            <p><strong>GPU:</strong> NVIDIA GTX 1060 6GB</p>
+                            <p><strong>RAM:</strong> 8GB DDR4</p>
+                            <p><strong>Use case:</strong> Gaming at 1080p</p>
+                        </div>
+                        <div class="example-box" style="margin-top: 10px;">
+                            <div class="example-label">Example Output</div>
+                            <p><strong>Recommended upgrade:</strong> NVIDIA RTX 4060</p>
+                            <p><strong>Estimated price:</strong> ~$299</p>
+                            <p><strong>Next upgrade:</strong> In approximately 2–3 years</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-section" id="tab-builds">
+                <h2>Builds</h2>
+                <p class="section-subtitle">Browse sample PC builds curated by the PC4U team.</p>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">1</div>
+                        <h3>Browsing Builds</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>The Builds page displays a collection of pre-configured PC builds at various price points and performance levels. Each card shows a snapshot of the build including its name, category, and key specs.</p>
+                        <img src="../images/help_builds.png" alt="Screenshot: PC4U Builds Page" class="screenshot">
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">2</div>
+                        <h3>View Details <span class="wip-badge">Work in Progress</span></h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Each build card has a <strong>View Details</strong> button that will show a full breakdown of the components in that build. This feature is currently under development and is not yet functional.</p>
+                        <img src="../images/help_builds_detail.png" alt="Screenshot: PC4U Builds Detail" class="screenshot">
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-section" id="tab-shop">
+                <h2>Shop <span class="wip-badge">Work in Progress</span></h2>
+                <p class="section-subtitle">Browse and purchase individual PC parts.</p>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">1</div>
+                        <h3>About the Shop</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>The Shop page will allow users to browse and purchase individual PC components at competitive prices. PC4U will scan for affordable options and surface them here.</p>
+                        <p>⚠️ <strong>This feature is currently under development</strong> and is not yet functional. Check back for updates.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-section" id="tab-discussion">
+                <h2>Discussion Board</h2>
+                <p class="section-subtitle">A community space to ask questions, share tips, and talk PC.</p>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">1</div>
+                        <h3>Browsing Posts (Visitors & Logged-In Users)</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Anyone can browse the discussion board without logging in. You can search for posts by keyword and sort results by:</p>
+                        <div class="capabilities-grid">
+                            <div class="capability-item">🕐 Latest</div>
+                            <div class="capability-item">❤️ Most Likes</div>
+                            <div class="capability-item">💬 Most Comments</div>
+                        </div>
+                        <img src="../images/help_discussion.png" alt="Screenshot: PC4U Discussion Board" class="screenshot">
+                        <div class="example-box">
+                            <div class="example-label">Example</div>
+                            <p>Search for <strong>"GPU upgrade"</strong> and sort by <strong>Most Liked</strong> to find the most popular community advice on GPU upgrades.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">2</div>
+                        <h3>Creating a Post <span style="color:#ffb700;font-size:0.8rem;font-weight:700;margin-left:8px;">🔒 LOGIN REQUIRED</span></h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Logged-in users can create new posts to ask questions or share information with the community.</p>
+                        <ul class="steps-list">
+                            <li>Log in using the <strong>LOG IN</strong> button in the navbar.</li>
+                            <li>Navigate to the Discussion page and click <strong>Create Post</strong>.</li>
+                            <li>Enter a title and write your message in the body field.</li>
+                            <li>Submit the post — it will appear on the board immediately.</li>
+                            <li>You can delete your own posts at any time.</li>
+                        </ul>
+                        <img src="../images/help_new_post.png" alt="Screenshot: PC4U Create Post" class="screenshot">
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">3</div>
+                        <h3>Replying to Posts <span style="color:#ffb700;font-size:0.8rem;font-weight:700;margin-left:8px;">🔒 LOGIN REQUIRED</span></h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Logged-in users can reply to any post. Replies support nested threading, so you can reply directly to another reply.</p>
+                        <ul class="steps-list">
+                            <li>Click on a post to open it.</li>
+                            <li>Scroll to the reply section and type your response.</li>
+                            <li>To reply to a specific comment, click the <strong>Reply</strong> button on that comment.</li>
+                            <li>You can delete your own replies at any time.</li>
+                        </ul>
+                        <img src="../images/help_post_reply.png" alt="Screenshot: PC4U Post Reply" class="screenshot">
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">4</div>
+                        <h3>Reacting to Posts <span style="color:#ffb700;font-size:0.8rem;font-weight:700;margin-left:8px;">🔒 LOGIN REQUIRED</span></h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Logged-in users can like or dislike any post to show appreciation or disagreement.</p>
+                        <div class="capabilities-grid">
+                            <div class="capability-item"><span class="cap-icon">❤️</span> Like a post</div>
+                            <div class="capability-item"><span class="cap-icon">👎</span> Dislike a post</div>
+                        </div>
+                        <img src="../images/help_post_reaction.png" alt="Screenshot: PC4U Post Reaction" class="screenshot">
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">5</div>
+                        <h3>What Visitors Can & Cannot Do</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <div class="capabilities-grid">
+                            <div class="capability-item">✅ View all posts</div>
+                            <div class="capability-item">✅ Search posts</div>
+                            <div class="capability-item">✅ Sort posts</div>
+                            <div class="capability-item locked">🔒 Create posts</div>
+                            <div class="capability-item locked">🔒 Reply to posts</div>
+                            <div class="capability-item locked">🔒 Like / dislike</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guide-section" id="tab-contact">
+                <h2>Contact Us</h2>
+                <p class="section-subtitle">Can't find what you're looking for? Send us a message.</p>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">✉</div>
+                        <h3>Get in Touch</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Have a question or need support? Fill out the form below and we'll get back to you.</p>
+
+                        <form name="contact-form" method="POST" netlify>
+                            <div class="form-group">
+                                <label for="customer-name">Your Name</label>
+                                <input type="text" id="customer-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-email">Your Email</label>
+                                <input type="email" id="customer-email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-message">Your Message</label>
+                                <textarea id="customer-message" name="message" rows="6" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+        <div class="contact-section-label">
+            Still need help? <a onclick="showTab('contact', event); window.scrollTo({top: 0, behavior: 'smooth'});">Contact us here.</a>
+        </div>
+        <!-- [End]
+            Author: Zhibin Wang, 02/21/2026
+            Assisted by Claude (Anthropic) for User Guide structure and content
+            Original contact form authored by Zhibin Wang
+        -->
     </main>
 
+    <!-- [Begin]
+        Author: Zhibin Wang, 02/21/2026
+        Assisted by Claude (Anthropic) for User Guide structure and content
+    -->
+    <script>
+        function showTab(tabId, event) {
+            document.querySelectorAll('.guide-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.guide-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            const matchingTab = document.querySelector(`.guide-tab[onclick*="'${tabId}'"]`);
+            if (matchingTab) matchingTab.classList.add('active');
+        }
+    </script>
+    <!-- [End]
+        Author: Zhibin Wang, 02/21/2026
+        Assisted by Claude (Anthropic) for User Guide structure and content
+    -->
 </body>
 </html>
