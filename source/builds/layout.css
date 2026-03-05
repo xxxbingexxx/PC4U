@@ -19,8 +19,8 @@ body {
 }
 
 .navbar {
-    width: 100;
-    padding: 1rem 5;
+    width: 100%;
+    padding: 1rem 5px;
     background-color: #000000;
     border-bottom: #1b1d24;
     backdrop-filter: blur(15px);
@@ -94,7 +94,7 @@ nav li:last-child {
 }
 
 .site-footer {
-  width: 100;
+  width: 100%;
     display: flex;
     justify-content: flex-end; 
     align-items: flex-end;
@@ -337,3 +337,524 @@ nav li:last-child {
 .build-page li {
     margin: 0.25rem 0;
 }
+
+/* [Begin]
+    Author: Zhibin Wang
+    Assisted by Claude (Anthropic) for styling, 03/01/2026
+*/
+body.highend-theme {
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --platinum: #d4d4d4;
+    --black: #050505;
+    min-height: 100vh;
+    background: var(--black);
+    background-image: none;
+    color: var(--platinum);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Animated background layer */
+body.highend-theme .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+body.highend-theme .bg-layer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 50% at 15% 90%, rgba(201,168,76,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 10%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        linear-gradient(160deg, #0a0a0a 0%, #050505 60%, #0d0900 100%);
+}
+
+body.highend-theme .bg-layer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.15) 2px,
+        rgba(0,0,0,0.15) 4px
+    );
+    opacity: 0.4;
+}
+
+body.highend-theme .spark {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    animation: rise linear infinite;
+    opacity: 0;
+}
+
+@keyframes rise {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateY(-100vh) translateX(var(--drift)); opacity: 0; }
+}
+
+body.highend-theme .navbar {
+    height: 64px;
+    background: rgba(5,5,5,0.9);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    backdrop-filter: blur(10px);
+    padding: 0 2rem;
+    gap: 2rem;
+}
+
+
+body.highend-theme .navbar .nav-left a:hover,
+body.highend-theme .navbar .nav-right a:hover {
+    color: var(--gold);
+}
+
+body.highend-theme .top-banner {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+}
+
+/* Main content */
+body.highend-theme main {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 2rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Page header */
+body.highend-theme .page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeDown 0.9s ease both;
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+body.highend-theme .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+body.highend-theme .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, #8a6a20 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: unset;
+}
+
+body.highend-theme .page-subtitle {
+    font-size: 1.1rem;
+    color: rgba(212,212,212,0.55);
+    letter-spacing: 0.08em;
+    font-weight: 400;
+}
+
+/* Gold divider */
+body.highend-theme .gold-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem auto;
+    max-width: 400px;
+}
+
+body.highend-theme .gold-rule::before,
+body.highend-theme .gold-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+}
+
+body.highend-theme .gold-rule::after {
+    background: linear-gradient(to left, transparent, var(--gold));
+}
+
+body.highend-theme .gold-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+}
+
+/* Content grid */
+body.highend-theme .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    animation: fadeUp 1s 0.3s ease both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Image panel */
+body.highend-theme .image-frame {
+    position: relative;
+    border: 1px solid rgba(201,168,76,0.3);
+    overflow: hidden;
+    background: #080808;
+}
+
+body.highend-theme .image-frame::before,
+body.highend-theme .image-frame::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+}
+
+body.highend-theme .image-frame::before {
+    top: 0; left: 0;
+    border-top: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+}
+
+body.highend-theme .image-frame::after {
+    bottom: 0; right: 0;
+    border-bottom: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+}
+
+body.highend-theme .corner-tr {
+    position: absolute;
+    top: 0; right: 0;
+    width: 24px; height: 24px;
+    border-top: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+    z-index: 2;
+}
+
+body.highend-theme .corner-bl {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 24px; height: 24px;
+    border-bottom: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+    z-index: 2;
+}
+
+body.highend-theme .gpu-image {
+    width: 100%;
+    display: block;
+    filter: brightness(0.9) contrast(1.1) saturate(0.85);
+    transition: opacity 0.28s ease, filter 0.4s, transform 0.6s;
+}
+
+body.highend-theme .image-frame:hover .gpu-image {
+    filter: brightness(1.05) contrast(1.1) saturate(1);
+    transform: scale(1.02);
+}
+
+body.highend-theme .image-caption {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+body.highend-theme .image-caption span {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+body.highend-theme .image-caption p {
+    font-size: 0.82rem;
+    color: rgba(212,212,212,0.45);
+    margin-top: 0.2rem;
+    letter-spacing: 0.05em;
+}
+
+/* Specs panel */
+body.highend-theme .specs-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+body.highend-theme .spec-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: unset;
+    line-height: unset;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+body.highend-theme .spec-row::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: rgba(201,168,76,0.06);
+    transition: width 0.3s ease;
+}
+
+body.highend-theme .spec-row:hover::before { width: 100%; }
+
+body.highend-theme .spec-row { cursor: pointer; }
+
+body.highend-theme .spec-row.active::before { width: 100%; background: rgba(201,168,76,0.12); }
+body.highend-theme .spec-row.active .spec-key { color: var(--gold-light); }
+body.highend-theme .spec-row.active .spec-bar { background: rgba(201,168,76,0.6); }
+
+body.highend-theme .spec-key {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1rem 1rem 1rem 0;
+    width: 110px;
+    flex-shrink: 0;
+}
+
+body.highend-theme .spec-bar {
+    width: 2px;
+    background: rgba(201,168,76,0.2);
+    margin: 0.6rem 1rem;
+    flex-shrink: 0;
+}
+
+body.highend-theme .spec-val {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--platinum);
+    padding: 1rem 0;
+    letter-spacing: 0.03em;
+    flex: 1;
+}
+
+/* Price block */
+body.highend-theme .price-block {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.highend-theme .price-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(212,212,212,0.5);
+    text-transform: uppercase;
+}
+
+body.highend-theme .price-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.04em;
+}
+
+/* CTA buttons */
+body.highend-theme .cta-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+body.highend-theme .btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, var(--gold) 0%, #a07828 100%);
+    color: var(--black);
+    border: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.highend-theme .btn-primary:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+body.highend-theme .btn-ghost {
+    padding: 1rem 1.4rem;
+    border: 1px solid rgba(201,168,76,0.4);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+body.highend-theme .btn-ghost:hover {
+    background: rgba(201,168,76,0.08);
+}
+
+/* Performance badges */
+body.highend-theme .badges {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+body.highend-theme .badge {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.3rem 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+body.highend-theme .nav-logout-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+body.highend-theme .nav-logout-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body.highend-theme .content-grid { grid-template-columns: 1fr; }
+    body.highend-theme .navbar { padding: 0 1rem; gap: 1rem; }
+}
+/* [End]
+    Author: Zhibin Wang
+    Assisted by Claude (Anthropic) for styling, 03/01/2026
+*/
+/* [Begin] Author: Pengyu Wang, 03/03/26 */
+/* Mobile layout fix for Build Deep-Dive pages (Budget/Mid/High) */
+@media (max-width: 600px) {
+
+  /* Make the build page content fit phone screens */
+  .builds-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Stack build cards in ONE column on phones */
+  .build-list {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Build card should not be too wide on phones */
+  .build-card {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+
+  /* Make the back button easier to tap */
+  .details-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+/* [End] Author: Pengyu Wang, 03/03/26 */
+
+/* [Begin] Author: Pengyu Wang, 03/03/26 */
+/* Issue #84: Creator theme for Mid-Range card on builds page */
+.build-card.midtier {
+  /* light-colored linear gradient */
+  background: linear-gradient(to bottom, #ffffff, #f2f4f8);
+  color: #111111;                 /* dark, high-contrast text */
+  padding: 28px;                  /* more spacious */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Make text inside the midtier card readable on light background */
+.build-card.midtier h3,
+.build-card.midtier p,
+.build-card.midtier .review {
+  color: #111111;
+}
+
+/* Optional: keep glow subtle (not overpowering) */
+.midtier::before {
+  background: #cfe0ff;   /* soft creator-blue tint */
+  filter: blur(22px);
+  opacity: 0;
+}
+
+.midtier:hover::before {
+  opacity: 0.55;
+}
+/* [End] Author: Pengyu Wang, 03/03/26 */

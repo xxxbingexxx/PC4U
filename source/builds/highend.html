@@ -4,27 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High-End Performance PC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="layout.css">
 </head>
 
-<body>
+<body class="highend-theme">
+
+    <!-- [Begin Mod]
+        Author: Zhibin Wang, 03/01/2026
+        Assisted by Claude (Anthropic) for structure and content
+    -->
+    <div class="bg-layer" id="bg"></div>
     <header>
         <nav class="navbar">
             <img src="../images/logo2.png" alt="PC4U Logo" class="logo-img">
             <ul class="nav-links nav-left">
-                <li><a href="../index.html">HOME</a></li> 
-                <li><a href="../builds/builds.html">BUILDS</a></li> 
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="../builds/builds.html">BUILDS</a></li>
                 <li><a href="#shop">SHOP</a></li>
-                <li><a href="../discussion/discussion.html">DISCUSSION</a></li> 
-                <li><a href="../about/about.html">ABOUT US</a></li> 
-                <li><a href="../help/help.html">SUPPORT</a></li> 
+                <li><a href="../discussion/discussion.html">DISCUSSION</a></li>
+                <li><a href="../about/about.html">ABOUT US</a></li>
+                <li><a href="../help/help.html">SUPPORT</a></li>
             </ul>
             <ul class="nav-links nav-right" id="nav-logged-out">
                 <li><button id="login-btn" class="nav-logout-btn">LOG IN</button></li>
                 <li><button id="register-btn" class="nav-logout-btn">REGISTER</button></li>
             </ul>
-            <ul class="nav-links nav-right" id="nav-logged-in" style="display: none;">
+            <ul class="nav-links nav-right" id="nav-logged-in" style="display:none;">
                 <li id="user-display-name" class="header-username"></li>
                 <li><button id="logout-btn" class="nav-logout-btn">LOGOUT</button></li>
             </ul>
@@ -34,25 +40,99 @@
     </header>
 
     <main>
-        <section class="builds-section">
-            <h2>High-End Performance PC</h2>
-            <p>Top-tier performance for gaming and productivity.</p>
+        <div class="page-header">
+            <p class="eyebrow">PC4U — Premium Build Series</p>
+            <h1 class="page-title">High-End<br>Performance</h1>
+            <p class="page-subtitle">Built for those who refuse to compromise</p>
+            <div class="gold-rule"><div class="gold-diamond"></div></div>
+        </div>
 
-            <h3>Recommended Parts</h3>
-            <ul class="build-list">
-                <li class="build-card highend">
-                    <p><strong>CPU:</strong> AMD Ryzen 7 7800X3D</p>
-                    <p><strong>GPU:</strong> NVIDIA RTX 4080 Super</p>
-                    <p><strong>RAM:</strong> 32GB DDR5</p>
-                    <p><strong>Storage:</strong> 2TB NVMe SSD</p>
-                    <p><strong>Motherboard:</strong> X670</p>
-                    <p><strong>PSU:</strong> 850W 80+ Gold</p>
-                    <p><strong>Case:</strong> Premium airflow case</p>
-                </li>
-            </ul>
+        <div class="content-grid">
 
-            <a href="../builds/builds.html" class="details-btn">← Back to Builds</a>
-        </section>
+            <!-- Component Image -->
+            <div class="image-panel">
+                <div class="image-frame">
+                    <div class="corner-tr"></div>
+                    <div class="corner-bl"></div>
+                    <img
+                        id="spec-image"
+                        class="gpu-image"
+                        src="../images/highend-pc.jpg"
+                        alt="High-End PC Build"
+                        loading="eager"
+                    >
+                </div>
+                <div class="image-caption">
+                    <span id="caption-title">Full System Build</span>
+                    <p id="caption-sub">Click a spec to view the component</p>
+                </div>
+
+                <div class="badges">
+                    <span class="badge">4K Gaming</span>
+                    <span class="badge">Ray Tracing</span>
+                    <span class="badge">DLSS 3.5</span>
+                    <span class="badge">PCIe 4.0</span>
+                    <span class="badge">VR Ready</span>
+                </div>
+            </div>
+
+            <!-- Specs -->
+            <div class="specs-panel">
+                <p class="specs-label">System Specifications</p>
+
+                <div class="spec-row" data-img="https://c1.neweggimages.com/productimage/nb640/19-113-793-03.png" data-caption-title="AMD Ryzen 7 7800X3D" data-caption-sub="Zen 4 Architecture · 8 Cores / 16 Threads · 120MB Cache">
+                    <div class="spec-key">CPU</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">AMD Ryzen 7 7800X3D</div>
+                </div>
+                <div class="spec-row" data-img="https://c1.neweggimages.com/ProductImageOriginal/B9ZZS240207175OZF30.jpg" data-caption-title="NVIDIA RTX 4080 Super" data-caption-sub="Ada Lovelace Architecture · 16GB GDDR6X">
+                    <div class="spec-key">GPU</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">NVIDIA RTX 4080 Super</div>
+                </div>
+                <div class="spec-row" data-img="https://assets.corsair.com/image/upload/c_pad,q_85,h_1100,w_1100,f_auto/products/Memory/vengeance-rgb-ddr5-blk-config/Gallery/Vengeance-RGB-DDR5-2UP-BLACK_01.webp" data-caption-title="32GB DDR5 6000MHz" data-caption-sub="Dual Channel · XMP 3.0 · Low Latency">
+                    <div class="spec-key">RAM</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">32GB DDR5 6000MHz</div>
+                </div>
+                <div class="spec-row" data-img="https://images.samsung.com/is/image/samsung/p6pim/us/mz-v9p1t0b-am/gallery/us-nvme-ssd-mz-v9p1t0b-am-----pro---tb-ssd-nvme--m---black-551141121?$product-details-jpg$" data-caption-title="2TB PCIe Gen4 NVMe SSD" data-caption-sub="7,000 MB/s Read · 6,500 MB/s Write">
+                    <div class="spec-key">Storage</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">2TB PCIe Gen4 NVMe SSD</div>
+                </div>
+                <div class="spec-row" data-img="https://dlcdnwebimgs.asus.com/files/media/B51D103D-2941-412E-8479-AF994957093B/v1/img/kv/ROG-Strix-X670E-E-Gaming.png" data-caption-title="X670E ATX Motherboard" data-caption-sub="PCIe 5.0 · USB 3.2 Gen 2 · AM5 Socket">
+                    <div class="spec-key">Board</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">X670E ATX Chipset</div>
+                </div>
+                <div class="spec-row" data-img="https://assets.corsair.com/image/upload/c_pad,q_auto,h_1024,w_1024,f_auto/products/Power-Supply-Units/base-rmx-2024-config/gallery/black/850/RM850x_2024_01.webp" data-caption-title="850W 80+ Gold PSU" data-caption-sub="Fully Modular · 10-Year Warranty">
+                    <div class="spec-key">PSU</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">850W 80+ Gold Modular</div>
+                </div>
+                <div class="spec-row" data-img="https://lian-li.com/wp-content/uploads/2021/12/evo-600-000.jpg" data-caption-title="Premium Airflow Case" data-caption-sub="Tempered Glass · 3× 120mm Fans Included">
+                    <div class="spec-key">Case</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">Premium Airflow — Tempered Glass</div>
+                </div>
+
+                <div class="price-block">
+                    <div class="price-label">Estimated Build Cost</div>
+                    <div class="price-amount">$2,499</div>
+                </div>
+
+                <div class="cta-row">
+                    <a href="#shop" class="btn-primary">Configure Build</a>
+                    <a href="../builds/builds.html" class="btn-ghost">← Builds</a>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script defer src="../js/highend.js"></script>
+    <!-- [End Mod]
+        Author: Zhibin Wang, 03/01/2026
+        Assisted by Claude (Anthropic) for structure and content
+    -->
 </body>
 </html>
