@@ -7,7 +7,7 @@
     <title> PC4U </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="layout.css">
     <script src="js/main.js" defer></script>
 </head>
@@ -49,57 +49,56 @@
             </div>
             <button id="show-budget-btn">Start</button>
         </div>
+        <!-- [Begin Mod]
+        Author: Zhibin Wang, 03/05/2026
+        Assisted by Claude (Anthropic) for structure and content
+        -->
         <div id="hiddenOption" class="hideOption">
-            <div class="question-one">
-                How would you categorize yourself?
-            </div>
-            <div class="option-one-container">
-                <div class="option-one">
-                    <div class="option-one-content">
-                        <h3>BEGINNER BUILD</h3>
-                        <p>Great Entry Build for Gaming and Entertainment</p>
-                    </div>
+            <div class="question-one">What's your budget?</div>
+            <div class="budget-slider-wrapper">
+                <span class="budget-label" id="budget-display">$800</span>
+                <input type="range" id="budget-slider" min="300" max="2000" value="800" step="50">
+                <div class="budget-range-labels">
+                    <span>$300</span>
+                    <span>$2000+</span>
                 </div>
-                <div class="option-two">
-                    <div class="option-two-content">
-                        <h3>ADVANCE BUILD</h3>
-                        <p>More Performance for higher FPS Gaming and Moderate Work </p>
-                    </div>
+            </div>
+            <div class="recommendation-box" id="recommendation-box">
+                <div class="rec-label">WE RECOMMEND</div>
+                <div class="rec-build-name" id="rec-build-name">ADVANCE BUILD</div>
+                <div class="rec-build-desc" id="rec-build-desc">More Performance for higher FPS Gaming and Moderate Work</div>
+                <div class="rec-actions">
+                    <a id="rec-link" href="builds/midrange.html" class="rec-btn">VIEW THIS BUILD</a>
+                    <button class="rec-btn rec-btn-secondary" disabled>BUILD YOUR OWN</button>
+                </div>
+            </div>
+        </div>
+        <div class="how-it-works">
+            <h2 class="how-title">HOW IT WORKS</h2>
+            <div class="how-steps">
+                <div class="how-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">SET YOUR BUDGET</div>
+                    <div class="step-desc">Use the slider to tell us what you're working with. No budget is too small or too big.</div>
+                </div>
+                <div class="how-step-divider">→</div>
+                <div class="how-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">CHOOSE YOUR PATH</div>
+                    <div class="step-desc">Go with our expert-curated pre-made build, or take the wheel and build your own from scratch.</div>
+                </div>
+                <div class="how-step-divider">→</div>
+                <div class="how-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">START BUILDING</div>
+                    <div class="step-desc">Browse full specs and parts lists, compare components, and get your build ready to order.</div>
                 </div>
             </div>
         </div>
-        <div class="info-banner">
-            <div class="card-container">
-                <h1 class="new-pc-header">NEW COMPUTER</h1>
-                <a href="builds/budget.html" class="build-link">
-                <div class="card-one">
-                    <img src="images/photocard1.png">
-                    <div class="card-one-content">
-                    <h3>BEGINNER BUILD</h3>
-                    <p>Great Entry Build for Gaming and Entertainment</p>
-                    </div>
-                </div>
-                </a>
-                <a href="builds/midrange.html" class="build-link">
-                <div class="card-two">
-                    <img src="images/photocard2.png">
-                    <div class="card-two-content">
-                    <h3>ADVANCE BUILD</h3>
-                    <p>More Performance for higher FPS Gaming and Moderate Work</p>
-                    </div>
-                </div>
-                </a>
-                <a href="builds/highend.html" class="build-link">
-                <div class="card-three">
-                    <img src="images/photocard3.png">
-                    <div class="card-three-content">
-                    <h3>PROFESSIONAL BUILD</h3>
-                    <p>For Professional Work in Editing, 3D Rendering, and Gaming</p>
-                    </div>
-                </div>
-                </a>
-            </div>
-        </div>
+        <!-- [End Mod]
+        Author: Zhibin Wang, 03/05/2026
+        Assisted by Claude (Anthropic) for structure and content
+        -->
     </main>
     <script type="module" src="js/main.js"></script>
 </body>

@@ -13,24 +13,26 @@ header {
 /* [End] Author: Zhibin Wang, 02/21/26 */
 
 body {
-    font-family: "Dosis", sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     background-color: #f3f3f3;
 
     background-image: linear-gradient(to left, #ffffff, #ffffff);
 }
 
+/* [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Unified navbar style to match highend.html */
 .navbar {
-    width: 100;
-    padding: 1rem 5;
-    background-color: #000000;
-    border-bottom: #1b1d24;
-    backdrop-filter: blur(15px);
+    width: 100%;
+    padding: 0 2rem;
+    background: rgba(5,5,5,0.9);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    backdrop-filter: blur(10px);
     margin-bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: center; 
-    justify-items: space-between;
+    justify-content: center;
+    gap: 2rem;
 }
+/* [End Mod] Author: Zhibin Wang, 03/05/2026 */
 
 nav span {
   position: absolute;
@@ -122,7 +124,7 @@ nav li:last-child {
     background: none;
     border: none;
 
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
 
     display: block;
     text-align: center;
@@ -141,12 +143,12 @@ nav li:last-child {
 
 .home-main-content {
     text-align: center;
-    padding: 20px 0px;
+    padding: 0;
 }
 
 .tagline {
     opacity: 1;
-    font-family: "Dosis", sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     font-size: 60px;
     font-weight: bold; 
     color: #000000; 
@@ -162,7 +164,7 @@ nav li:last-child {
 #show-budget-btn {
     display: inline-block;
     padding: 10px 20px;
-    font-family: "Dosis", sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     font-size: 20px;
     font-weight: bold;
     color: #000000;
@@ -180,12 +182,12 @@ nav li:last-child {
 }
 
 
+/* [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Unified top-banner to match highend.html */
 .top-banner {
-    width: auto;
-    height: 30px;
-    background-color: #ffb700;
-    border: 1px solid #ffb700;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a84c, #f0d080, #c9a84c, transparent);
 }
+/* [End Mod] Author: Zhibin Wang, 03/05/2026 */
 
 .info-banner {
 
@@ -263,21 +265,25 @@ nav li:last-child {
 }
 
 .question-one {
-  font-size: 100px;
+  font-size: 36px;
   font-weight: bold;
   display: block;
+  padding: 0 0 6px;
+  color: #fff;
 }
 
 .fadeCollapse {
   overflow: hidden;
   opacity: 1;
-  max-height: 600px; /* big enough to hold all intro content */
+  max-height: 600px;
+  padding: 80px 20px 60px;
   transition: opacity 0.5s ease, max-height 0.5s ease;
 }
 
 .fadeCollapse.fadeOut {
   opacity: 0;
   max-height: 0;
+  padding: 0;
 }
 
 .hideOption {
@@ -289,8 +295,10 @@ nav li:last-child {
 
 .showOption {
   opacity: 1;
-  max-height: 300px; /* should be slightly more than content height */
-  transition: opacity 1.5s ease, max-height 0.9s ease, margin ;
+  max-height: 800px;
+  background: #111;
+  padding: 24px 20px 32px;
+  transition: opacity 1.5s ease, max-height 0.9s ease;
 }
 
 .option-one-container {
@@ -301,7 +309,8 @@ nav li:last-child {
 }
 
 .option-one,
-.option-two {
+.option-two,
+.option-three {
   align-items: center;
   text-align: center;
   width: 700px;
@@ -328,6 +337,170 @@ nav li:last-child {
   color: #ffffff;
   font-size: 20px;
 }
+/* [Begin]
+   Author: Zhibin Wang, 03/05/2026
+   Assisted by Claude (Anthropic) for structure and content
+*/
+.option-one,
+.option-two,
+.option-three {
+  cursor: pointer;
+}
+
+.card-highlighted {
+  outline: 4px solid #ffb700;
+  box-shadow: 0 0 20px rgba(255, 183, 0, 0.6);
+}
+
+.budget-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 10px auto;
+  width: 500px;
+}
+
+.budget-label {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffb700;
+}
+
+#budget-slider {
+  width: 100%;
+  accent-color: #ffb700;
+  height: 6px;
+  cursor: pointer;
+}
+
+.budget-range-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #888;
+}
+
+.recommendation-box {
+  margin: 12px auto 0;
+  padding: 16px 40px;
+  background: transparent;
+  border: 2px solid #333;
+  color: #fff;
+  width: fit-content;
+  min-width: 300px;
+  text-align: center;
+}
+
+.rec-label {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #ffb700;
+  margin-bottom: 8px;
+}
+
+.rec-build-name {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.rec-build-desc {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.rec-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.rec-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background: #ffb700;
+  color: #000;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 3px solid #ffb700;
+  cursor: pointer;
+}
+
+.rec-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border-color: #555;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.how-it-works {
+  background: #000;
+  color: #fff;
+  padding: 30px 40px;
+  text-align: center;
+  border-top: 3px solid #ffb700;
+}
+
+.how-title {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  color: #ffb700;
+}
+
+.how-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.how-step {
+  width: 220px;
+  padding: 20px;
+}
+
+.step-number {
+  font-size: 40px;
+  font-weight: bold;
+  color: #ffb700;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.step-desc {
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.how-step-divider {
+  font-size: 48px;
+  color: #333;
+  padding: 0 10px;
+}
+
+/* [End]
+   Author: Zhibin Wang, 03/05/2026
+   Assisted by Claude (Anthropic) for structure and content
+*/
+
 /* [Begin] Author: Pengyu Wang, 02/21/26 */
 .build-link{
   display: contents;
@@ -335,3 +508,89 @@ nav li:last-child {
   color: inherit;
 }
 /* [End] Author: Pengyu Wang, 02/21/26 */
+
+/* [Begin] Author: Pengyu Wang, 03/02/26 */
+/* Mobile layout & spec table reflow (Issue: Build Deep-Dive - Mobile Layout & Table Reflow) */
+@media (max-width: 600px) {
+
+  /* Remove big side margins and make content fit phone screens */
+  .option-one-container,
+  .option-one,
+  .option-two,
+  .option-one-content,
+  .option-two-content,
+  .card-container,
+  .card-one,
+  .card-two,
+  .card-three {
+    max-width: 100%;
+  }
+
+  .option-one,
+  .option-two,
+  .card-one,
+  .card-two,
+  .card-three {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .option-one-content,
+  .option-two-content,
+  .card-one-content,
+  .card-two-content,
+  .card-three-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Spec table reflow: no horizontal scroll on 375px width */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  /* Hide table header on mobile */
+  .spec-table thead {
+    display: none;
+  }
+
+  /* Make table rows stack like cards */
+  .spec-table,
+  .spec-table tbody,
+  .spec-table tr,
+  .spec-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .spec-table tr {
+    border: 1px solid #1b1d24;
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .spec-table td {
+    border: none;
+    border-bottom: 1px solid #1b1d24;
+    padding: 0.45rem 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    word-break: break-word;
+  }
+
+  .spec-table td:last-child {
+    border-bottom: none;
+  }
+
+  /* Left side label comes from data-label in HTML */
+  .spec-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex: 0 0 40%;
+  }
+}
+/* [End] Author: Pengyu Wang, 03/02/26 */
