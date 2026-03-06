@@ -12,25 +12,26 @@ header {
 /* [End] Author: Zhibin Wang, 02/21/26 */
 
 body {
-    font-family: "Dosis", sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     background-color: #f3f3f3;
 
     background-image: linear-gradient(to left, #ffffff, #ffffff);
 }
 
+/* [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Unified navbar style to match highend.html */
 .navbar {
-    width: 100;
-    padding: 1rem 5;
-    background-color: #000000;
-    border-bottom: #1b1d24;
-    backdrop-filter: blur(15px);
+    width: 100%;
+    padding: 0 2rem;
+    background: rgba(5,5,5,0.9);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    backdrop-filter: blur(10px);
     margin-bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: center; 
-    justify-items: space-between;
-    
+    justify-content: center;
+    gap: 2rem;
 }
+/* [End Mod] Author: Zhibin Wang, 03/05/2026 */
 
 nav span {
   position: absolute;
@@ -107,12 +108,12 @@ nav li:last-child {
     width: auto;
 }
 
+/* [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Unified top-banner to match highend.html */
 .top-banner {
-    width: auto;
-    height: 30px;
-    background-color: #ffb700;
-    border: 1px solid #ffb700;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a84c, #f0d080, #c9a84c, transparent);
 }
+/* [End Mod] Author: Zhibin Wang, 03/05/2026 */
 
 .header-username {
     color: #ffd700;
@@ -129,7 +130,7 @@ nav li:last-child {
     background: none;
     border: none;
 
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
 
     display: block;
     text-align: center;

@@ -6,7 +6,7 @@
     <title> Contact Us </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="layout.css">
     <!-- [Begin] Author: Zhibin Wang, 02/21/2026 -->
     <link rel="stylesheet" href="help.css">
@@ -47,12 +47,12 @@
             <p>Learn how to use PC4U and get the most out of your experience.</p>
         </div>
         <div class="guide-tabs">
-            <button class="guide-tab active" onclick="showTab('getting-started', event)">GETTING STARTED</button>
-            <button class="guide-tab" onclick="showTab('home-survey', event)">HOME SURVEY</button>
-            <button class="guide-tab" onclick="showTab('builds', event)">BUILDS</button>
-            <button class="guide-tab" onclick="showTab('shop', event)">SHOP</button>
-            <button class="guide-tab" onclick="showTab('discussion', event)">DISCUSSION</button>
-            <button class="guide-tab" onclick="showTab('contact', event)">CONTACT</button>
+            <button id="tab-btn-getting-started" class="guide-tab active" onclick="showTab('getting-started', event)">GETTING STARTED</button>
+            <button id="tab-btn-home-survey" class="guide-tab" onclick="showTab('home-survey', event)">BUDGET QUIZ</button>
+            <button id="tab-btn-builds" class="guide-tab" onclick="showTab('builds', event)">BUILDS</button>
+            <button id="tab-btn-shop" class="guide-tab" onclick="showTab('shop', event)">SHOP</button>
+            <button id="tab-btn-discussion" class="guide-tab" onclick="showTab('discussion', event)">DISCUSSION</button>
+            <button id="tab-btn-contact" class="guide-tab" onclick="showTab('contact', event)">CONTACT</button>
         </div>
         <div class="guide-content">
             <div class="guide-section active" id="tab-getting-started">
@@ -96,7 +96,7 @@
                     <div class="feature-block-body">
                         <p>Use the navigation bar at the top to move between sections of the site:</p>
                         <div class="capabilities-grid">
-                            <div class="capability-item"><span class="cap-icon">🏠</span> <strong>Home</strong> — PC survey</div>
+                            <div class="capability-item"><span class="cap-icon">🏠</span> <strong>Home</strong> — Budget quiz &amp; build finder</div>
                             <div class="capability-item"><span class="cap-icon">🖥️</span> <strong>Builds</strong> — Sample PC builds</div>
                             <div class="capability-item"><span class="cap-icon">🛒</span> <strong>Shop</strong> — Parts store</div>
                             <div class="capability-item"><span class="cap-icon">💬</span> <strong>Discussion</strong> — Community board</div>
@@ -107,51 +107,67 @@
                 </div>
             </div>
 
+            <!-- [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Updated to reflect live budget quiz feature -->
             <div class="guide-section" id="tab-home-survey">
-                <h2>Home Survey <span class="wip-badge">Work in Progress</span></h2>
-                <p class="section-subtitle">A step-by-step questionnaire to get personalized PC upgrade recommendations.</p>
+                <h2>Budget Quiz</h2>
+                <p class="section-subtitle">Tell us your budget and we'll instantly recommend the right PC build for you.</p>
 
                 <div class="feature-block">
                     <div class="feature-block-header">
                         <div class="step-num">1</div>
-                        <h3>How It Works</h3>
+                        <h3>Start the Quiz</h3>
                     </div>
                     <div class="feature-block-body">
-                        <p>The home page features a step-by-step survey that asks about your current PC specifications and usage habits. Based on your answers, PC4U will generate a personalized upgrade recommendation.</p>
-                        <p>⚠️ <strong>This feature is currently under development</strong> and is not yet fully functional. Check back for updates.</p>
-                        <img src="../images/help_survey.png" alt="Screenshot: PC4U Home Survey" class="screenshot">
+                        <p>On the home page, click the <strong>START</strong> button to begin. The intro text will animate away and the budget quiz will appear.</p>
+                        <img src="../images/help_budget_quiz_start.png" alt="Screenshot: PC4U Home Page" class="screenshot">
                     </div>
                 </div>
 
                 <div class="feature-block">
                     <div class="feature-block-header">
                         <div class="step-num">2</div>
-                        <h3>What to Expect (When Complete)</h3>
+                        <h3>Set Your Budget</h3>
                     </div>
                     <div class="feature-block-body">
-                        <p>Once the feature is live, here is the expected experience:</p>
-                        <ul class="steps-list">
-                            <li>Answer a series of questions about your current PC hardware (CPU, GPU, RAM, storage, etc.).</li>
-                            <li>Tell us how you use your PC — gaming, video editing, general use, etc.</li>
-                            <li>Receive a tailored recommendation for what to upgrade and why.</li>
-                            <li>See estimated prices and where to buy the recommended parts.</li>
-                            <li>Get a suggested timeline for your next upgrade.</li>
-                        </ul>
-                        <div class="example-box">
-                            <div class="example-label">Example Input</div>
-                            <p><strong>GPU:</strong> NVIDIA GTX 1060 6GB</p>
-                            <p><strong>RAM:</strong> 8GB DDR4</p>
-                            <p><strong>Use case:</strong> Gaming at 1080p</p>
+                        <p>Drag the slider to set your budget between <strong>$300</strong> and <strong>$2000+</strong>. Your current budget is shown above the slider in real time.</p>
+                        <img src="../images/help_budget_quiz.png" alt="Screenshot: PC4U Budget Slider" class="screenshot">
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">3</div>
+                        <h3>Get Your Recommendation</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>As you move the slider, PC4U instantly recommends a build based on your budget:</p>
+                        <div class="capabilities-grid">
+                            <div class="capability-item">💻 <strong>$300–$699</strong> — Beginner Build</div>
+                            <div class="capability-item">🖥️ <strong>$700–$1199</strong> — Advance Build</div>
+                            <div class="capability-item">🚀 <strong>$1200+</strong> — Professional Build</div>
                         </div>
-                        <div class="example-box" style="margin-top: 10px;">
-                            <div class="example-label">Example Output</div>
-                            <p><strong>Recommended upgrade:</strong> NVIDIA RTX 4060</p>
-                            <p><strong>Estimated price:</strong> ~$299</p>
-                            <p><strong>Next upgrade:</strong> In approximately 2–3 years</p>
+                        <div class="example-box" style="margin-top: 16px;">
+                            <div class="example-label">Example</div>
+                            <p>Set your budget to <strong>$900</strong> → PC4U recommends the <strong>Advance Build</strong> — more performance for higher FPS gaming and moderate work.</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="feature-block">
+                    <div class="feature-block-header">
+                        <div class="step-num">4</div>
+                        <h3>View the Build or Build Your Own</h3>
+                    </div>
+                    <div class="feature-block-body">
+                        <p>Once you have a recommendation, you have two options:</p>
+                        <ul class="steps-list">
+                            <li>Click <strong>VIEW THIS BUILD</strong> to go directly to the full specs and parts list for your recommended build.</li>
+                            <li>Click <strong>BUILD YOUR OWN</strong> to configure a custom build from scratch. <em>(Coming soon — not yet functional.)</em></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <!-- [End Mod] Author: Zhibin Wang, 03/05/2026 -->
 
             <div class="guide-section" id="tab-builds">
                 <h2>Builds</h2>
@@ -344,9 +360,17 @@
             document.querySelectorAll('.guide-section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.guide-tab').forEach(t => t.classList.remove('active'));
             document.getElementById('tab-' + tabId).classList.add('active');
-            const matchingTab = document.querySelector(`.guide-tab[onclick*="'${tabId}'"]`);
-            if (matchingTab) matchingTab.classList.add('active');
+            document.getElementById('tab-btn-' + tabId).classList.add('active');
         }
+
+        // [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Dynamic header height for sticky guide-tabs
+        function syncHeaderHeight() {
+            const h = document.querySelector('header').offsetHeight;
+            document.documentElement.style.setProperty('--header-height', h + 'px');
+        }
+        syncHeaderHeight();
+        window.addEventListener('resize', syncHeaderHeight);
+        // [End Mod] Author: Zhibin Wang, 03/05/2026
     </script>
     <!-- [End]
         Author: Zhibin Wang, 02/21/2026

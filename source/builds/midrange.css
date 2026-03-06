@@ -1,0 +1,484 @@
+/* [Begin Mod]
+   Author: Pengyu Wang, 03/05/2026
+   Mid-Range Creator Theme — Unified with High-End structure (Dark Blue Variant)
+*/
+
+/* =========================
+   Theme Tokens
+========================= */
+:root {
+  --bg0: #05070d;
+  --bg1: #070b16;
+  --bg2: #0b1630;
+
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.62);
+
+  --panel: rgba(12, 18, 34, 0.72);
+  --panel2: rgba(12, 18, 34, 0.55);
+  --border: rgba(130, 170, 255, 0.14);
+  --shadow: 0 18px 55px rgba(0,0,0,0.55);
+
+  --accent: #4da3ff; /* midrange blue accent (replaces high-end gold) */
+
+  --radius: 18px;
+}
+
+/* =========================
+   Base
+========================= */
+html, body { margin: 0; }
+
+body {
+  font-family: "Rajdhani", sans-serif;   /* match High-End */
+  background: var(--bg0);
+  color: var(--text);
+}
+
+/* =========================
+   Background Layer
+========================= */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1100px 650px at 18% 12%, rgba(77,163,255,0.22), transparent 60%),
+    radial-gradient(900px 520px at 82% 28%, rgba(110,231,255,0.14), transparent 55%),
+    radial-gradient(900px 700px at 55% 85%, rgba(45, 70, 140, 0.22), transparent 60%),
+    linear-gradient(to bottom, var(--bg1), var(--bg2));
+}
+
+/* =========================
+   Spark Animation (for midrange.js)
+========================= */
+.spark {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(140, 200, 255, 0.65);
+  box-shadow: 0 0 14px rgba(77,163,255,0.35);
+  animation-name: floatSpark;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatSpark {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  10%  { opacity: 0.85; }
+  90%  { opacity: 0.75; }
+  100% { transform: translate3d(var(--drift), -110vh, 0); opacity: 0; }
+}
+
+/* =========================
+   Navbar (reuse)
+========================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Unified navbar style to match highend.html */
+.navbar {
+  width: 100%;
+  padding: 0 2rem;
+  background: rgba(5,5,5,0.9);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+/* [End Mod] Author: Zhibin Wang, 03/05/2026 */
+
+.navbar .nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 10px;
+  display: flex;
+}
+
+nav li {
+  padding: 0 15px;
+  border-right: 1px solid #ffb700;
+}
+nav li:last-child { border-right: none; }
+
+.navbar .nav-links a,
+.nav-logout-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: "Rajdhani", sans-serif;
+}
+
+.logo-img {
+  max-height: 45px;
+  width: auto;
+  display: block;
+  margin: 0px 100px;
+}
+
+/* [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Unified top-banner to match highend.html */
+.top-banner {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #c9a84c, #f0d080, #c9a84c, transparent);
+}
+/* [End Mod] Author: Zhibin Wang, 03/05/2026 */
+
+.nav-logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar .nav-left a:hover,
+.navbar .nav-right a:hover,
+.nav-logout-btn:hover {
+  color: #ffb700;
+}
+
+.header-username {
+  color: #ffd700;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* =========================
+   Page Layout
+========================= */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 58px 18px 90px;
+}
+
+/* =========================
+   Page Header (match High-End structure)
+========================= */
+.page-header {
+  text-align: center;
+  margin: 10px 0 34px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: rgba(140,200,255,0.60);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.page-title {
+  font-family: "Bebas Neue", sans-serif; /* match High-End */
+  margin: 0;
+  font-size: 86px;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 14px 46px rgba(0,0,0,0.65);
+}
+
+.page-subtitle {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* Use same class names as High-End (styled blue here) */
+.gold-rule {
+  width: 420px;
+  height: 1px;
+  margin: 22px auto 0;
+  background: linear-gradient(to right, transparent, rgba(77,163,255,0.85), transparent);
+  position: relative;
+  opacity: 0.9;
+}
+
+.gold-diamond {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: 0 0 22px rgba(77,163,255,0.45);
+}
+
+/* =========================
+   Content Grid
+========================= */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 26px;
+  align-items: start;
+}
+
+/* =========================
+   Panels (dark glass)
+========================= */
+.image-panel,
+.specs-panel {
+  background: linear-gradient(to bottom, var(--panel), var(--panel2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.image-panel { padding: 18px; }
+.specs-panel { padding: 18px; }
+
+/* =========================
+   Image Panel
+========================= */
+.image-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(140, 200, 255, 0.16);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+
+.corner-tr,
+.corner-bl {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 2px solid rgba(77,163,255,0.55);
+  z-index: 2;
+}
+
+.corner-tr {
+  top: 12px;
+  right: 12px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.corner-bl {
+  left: 12px;
+  bottom: 12px;
+  border-right: none;
+  border-top: none;
+}
+
+/* Match High-End class name */
+.gpu-image {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.25s ease;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.image-caption { margin-top: 14px; }
+.image-caption span {
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(255,255,255,0.92);
+}
+.image-caption p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.badge {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(220, 238, 255, 0.88);
+  background: rgba(77,163,255,0.10);
+  border: 1px solid rgba(77,163,255,0.18);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+/* =========================
+   Specs Panel (High-End style)
+========================= */
+.specs-label {
+  margin: 0 0 14px;
+  color: rgba(140,200,255,0.60);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 12px;
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 12px;
+  padding: 16px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(130, 170, 255, 0.12);
+  background: rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.spec-row + .spec-row { margin-top: 10px; }
+
+.spec-row:hover {
+  transform: translateY(-1px);
+  border-color: rgba(77,163,255,0.35);
+  background: rgba(0,0,0,0.26);
+}
+
+.spec-row.active {
+  border-color: rgba(77,163,255,0.55);
+  box-shadow: 0 14px 26px rgba(77,163,255,0.10);
+  background: rgba(0,0,0,0.34);
+}
+
+.spec-key {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.12em;
+  color: rgba(220,238,255,0.80);
+}
+
+.spec-bar {
+  height: 2px;
+  align-self: center;
+  background: linear-gradient(to right, rgba(77,163,255,0.45), transparent);
+  opacity: 0.9;
+}
+
+.spec-val {
+  font-weight: 600;
+  color: rgba(255,255,255,0.92);
+}
+
+/* =========================
+   Price Block (match High-End structure)
+========================= */
+.price-block {
+  margin-top: 14px;
+  padding: 16px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(130, 170, 255, 0.14);
+  background: rgba(0,0,0,0.22);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-label {
+  color: rgba(140,200,255,0.60);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.price-amount {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 44px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+/* =========================
+   CTA Buttons (match High-End layout)
+========================= */
+/* [Begin] Author: Pengyu Wang, 03/05/26 */
+/* Alternative: remove outer CTA frame (closer to High-End) */
+.cta-row{
+  border: none;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+/* [End] Author: Pengyu Wang, 03/05/26 */
+
+.btn-primary,
+.btn-ghost {
+  width: 100%;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  padding: 14px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: "Rajdhani", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #041022;
+  box-shadow: 0 14px 26px rgba(77,163,255,0.16);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: rgba(220,238,255,0.85);
+  border-color: rgba(130,170,255,0.18);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 980px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .page-title { font-size: 70px; }
+  .gpu-image { height: 320px; }
+  .cta-row { grid-template-columns: 1fr; }
+}
+
+/* [Begin] Author: Pengyu Wang, 03/05/26 */
+/* Fix CTA overflow: keep buttons inside specs-panel */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.specs-panel {
+  overflow: hidden; /* safety: prevent any child from spilling out */
+}
+
+/* Make CTA grid never exceed parent width */
+.cta-row {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Allow grid children to shrink (prevents overflow on long buttons) */
+.cta-row > a {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Do NOT force 100% width on buttons inside grid */
+.btn-primary,
+.btn-ghost {
+  width: auto;        /* key change from 100% */
+  display: block;     /* fill their grid cell naturally */
+}
+/* [End] Author: Pengyu Wang, 03/05/26 */
+
+/* [End Mod]
+   Author: Pengyu Wang, 03/05/2026
+*/

@@ -4,27 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Gaming PC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="layout.css">
 </head>
 
-<body>
+<body class="budget-theme">
+
+    
+    <div class="bg-layer" id="bg"></div>
     <header>
         <nav class="navbar">
             <img src="../images/logo2.png" alt="PC4U Logo" class="logo-img">
             <ul class="nav-links nav-left">
-                <li><a href="../index.html">HOME</a></li> 
-                <li><a href="../builds/builds.html">BUILDS</a></li> 
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="../builds/builds.html">BUILDS</a></li>
                 <li><a href="#shop">SHOP</a></li>
-                <li><a href="../discussion/discussion.html">DISCUSSION</a></li> 
-                <li><a href="../about/about.html">ABOUT US</a></li> 
-                <li><a href="../help/help.html">SUPPORT</a></li> 
+                <li><a href="../discussion/discussion.html">DISCUSSION</a></li>
+                <li><a href="../about/about.html">ABOUT US</a></li>
+                <li><a href="../help/help.html">SUPPORT</a></li>
             </ul>
             <ul class="nav-links nav-right" id="nav-logged-out">
                 <li><button id="login-btn" class="nav-logout-btn">LOG IN</button></li>
                 <li><button id="register-btn" class="nav-logout-btn">REGISTER</button></li>
             </ul>
-            <ul class="nav-links nav-right" id="nav-logged-in" style="display: none;">
+            <ul class="nav-links nav-right" id="nav-logged-in" style="display:none;">
                 <li id="user-display-name" class="header-username"></li>
                 <li><button id="logout-btn" class="nav-logout-btn">LOGOUT</button></li>
             </ul>
@@ -34,25 +37,96 @@
     </header>
 
     <main>
-        <section class="builds-section">
-            <h2>Budget Gaming PC</h2>
-            <p>A great entry-level gaming build for 1080p gaming.</p>
+        <div class="page-header">
+            <p class="eyebrow">PC4U — Value Build Series</p>
+            <h1 class="page-title">Budget Gaming<br>Performance</h1>
+            <p class="page-subtitle">Powerful gaming without breaking the bank</p>
+            <div class="gold-rule"><div class="gold-diamond"></div></div>
+        </div>
 
-            <h3>Recommended Parts</h3>
-            <ul class="build-list">
-                <li class="build-card budget">
-                    <p><strong>CPU:</strong> AMD Ryzen 5 5600</p>
-                    <p><strong>GPU:</strong> Radeon RX 6600</p>
-                    <p><strong>RAM:</strong> 16GB (2x8GB) DDR4</p>
-                    <p><strong>Storage:</strong> 1TB NVMe SSD</p>
-                    <p><strong>Motherboard:</strong> B550</p>
-                    <p><strong>PSU:</strong> 650W 80+ Bronze</p>
-                    <p><strong>Case:</strong> Airflow-focused ATX case</p>
-                </li>
-            </ul>
+        <div class="content-grid">
 
-            <a href="../builds/builds.html" class="details-btn">← Back to Builds</a>
-        </section>
+            <!-- Component Image -->
+            <div class="image-panel">
+                <div class="image-frame">
+                    <div class="corner-tr"></div>
+                    <div class="corner-bl"></div>
+                    <img
+                        id="spec-image"
+                        class="gpu-image"
+                        src="../images/gaming-pc.jpg"
+                        alt="Budget PC Build"
+                        loading="eager"
+                    >
+                </div>
+                <div class="image-caption">
+                    <span id="caption-title">Value System Build</span>
+                    <p id="caption-sub">Click a spec to view the component</p>
+                </div>
+
+                <div class="badges">
+                    <span class="badge">1080p Gaming</span>
+                    <span class="badge">60 FPS</span>
+                    <span class="badge">Esports Ready</span>
+                    <span class="badge">PCIe 3.0</span>
+                    <span class="badge">Great Value</span>
+                </div>
+            </div>
+
+            <!-- Specs -->
+            <div class="specs-panel">
+                <p class="specs-label">System Specifications</p>
+
+                <div class="spec-row" data-img="/images/budget_parts_1.jpg" data-caption-title="AMD Ryzen 5 5600" data-caption-sub="Zen 3 Architecture · 6 Cores / 12 Threads · 32MB Cache">
+                    <div class="spec-key">CPU</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">AMD Ryzen 5 5600</div>
+                </div>
+                <div class="spec-row" data-img="/images/budget_parts_2.jpg" data-caption-title="AMD Radeon RX 6600" data-caption-sub="RDNA 2 Architecture · 8GB GDDR6">
+                    <div class="spec-key">GPU</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">AMD Radeon RX 6600</div>
+                </div>
+                <div class="spec-row" data-img="/images/budget_parts_3.jpg" data-caption-title="16GB DDR4 3200MHz" data-caption-sub="Dual Channel · XMP 2.0 · Good Latency">
+                    <div class="spec-key">RAM</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">16GB DDR4 3200MHz</div>
+                </div>
+                <div class="spec-row" data-img="/images/budget_parts_4.avif" data-caption-title="1TB PCIe Gen3 NVMe SSD" data-caption-sub="3,500 MB/s Read · 3,000 MB/s Write">
+                    <div class="spec-key">Storage</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">1TB PCIe Gen3 NVMe SSD</div>
+                </div>
+                <div class="spec-row" data-img="/images/budget_parts_5.jpg" data-caption-title="B550 ATX Motherboard" data-caption-sub="PCIe 4.0 · USB 3.1 Gen 2 · AM4 Socket">
+                    <div class="spec-key">Board</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">B550 ATX Chipset</div>
+                </div>
+                <div class="spec-row" data-img="/images/budget_parts_6.jpg" data-caption-title="650W 80+ Bronze PSU" data-caption-sub="Semi-Modular · 3-Year Warranty">
+                    <div class="spec-key">PSU</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">650W 80+ Bronze Semi-Modular</div>
+                </div>
+                <div class="spec-row" data-img="/images/budget_parts_7.jpg" data-caption-title="Compact Mid-Tower Case" data-caption-sub="Mesh Front Panel · 2× 120mm Fans Included">
+                    <div class="spec-key">Case</div>
+                    <div class="spec-bar"></div>
+                    <div class="spec-val">Mid-Tower — Mesh Front Panel</div>
+                </div>
+
+                <div class="price-block">
+                    <div class="price-label">Estimated Build Cost</div>
+                    <div class="price-amount">$649</div>
+                </div>
+
+                <div class="cta-row">
+                    <a href="#shop" class="btn-primary">Configure Build</a>
+                    <a href="../builds/builds.html" class="btn-ghost">← Builds</a>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script type="module" src="../js/budget.js"></script>
+    
 </body>
 </html>

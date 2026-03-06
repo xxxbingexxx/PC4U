@@ -12,25 +12,26 @@ header {
 /* [End] Author: Zhibin Wang, 02/21/26 */
 
 body {
-    font-family: "Dosis", sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     background-color: #f3f3f3;
 
     background-image: linear-gradient(to left, #ffffff, #ffffff);
 }
 
+/* [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Unified navbar style to match highend.html */
 .navbar {
     width: 100%;
-    padding: 1rem 5px;
-    background-color: #000000;
-    border-bottom: #1b1d24;
-    backdrop-filter: blur(15px);
+    padding: 0 2rem;
+    background: rgba(5,5,5,0.9);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    backdrop-filter: blur(10px);
     margin-bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: center; 
-    justify-items: space-between;
-    
+    justify-content: center;
+    gap: 2rem;
 }
+/* [End Mod] Author: Zhibin Wang, 03/05/2026 */
 
 nav span {
   position: absolute;
@@ -107,12 +108,12 @@ nav li:last-child {
     width: auto;
 }
 
+/* [Begin Mod] Author: Zhibin Wang, 03/05/2026 — Unified top-banner to match highend.html */
 .top-banner {
-    width: auto;
-    height: 30px;
-    background-color: #ffb700;
-    border: 1px solid #ffb700;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a84c, #f0d080, #c9a84c, transparent);
 }
+/* [End Mod] Author: Zhibin Wang, 03/05/2026 */
 
 .header-username {
     color: #ffd700;
@@ -129,7 +130,7 @@ nav li:last-child {
     background: none;
     border: none;
 
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
 
     display: block;
     text-align: center;
@@ -406,7 +407,6 @@ body.highend-theme .spark {
 }
 
 body.highend-theme .navbar {
-    height: 64px;
     background: rgba(5,5,5,0.9);
     border-bottom: 1px solid rgba(201,168,76,0.2);
     backdrop-filter: blur(10px);
@@ -858,3 +858,413 @@ body.highend-theme .nav-logout-btn:hover {
   opacity: 0.55;
 }
 /* [End] Author: Pengyu Wang, 03/03/26 */
+/* [Begin]
+    Author: Zhibin Wang
+    Assisted by Claude (Anthropic) for styling, 03/05/2026
+    Budget theme variant of highend-theme
+*/
+body.budget-theme {
+    --silver: #a8a8a8;
+    --silver-light: #d0d0d0;
+    --platinum: #d4d4d4;
+    --black: #050505;
+    min-height: 100vh;
+    background: var(--black);
+    background-image: none;
+    color: var(--platinum);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Animated background layer */
+body.budget-theme .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+body.budget-theme .bg-layer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 50% at 15% 90%, rgba(168,168,168,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 10%, rgba(168,168,168,0.05) 0%, transparent 70%),
+        linear-gradient(160deg, #0a0a0a 0%, #050505 60%, #0d0900 100%);
+}
+
+body.budget-theme .bg-layer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.01) 2px,
+        rgba(255,255,255,0.01) 4px
+    );
+    pointer-events: none;
+}
+
+body.budget-theme main {
+    position: relative;
+    z-index: 10;
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Page header */
+body.budget-theme .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 0.8s ease;
+}
+
+body.budget-theme .eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--silver);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+body.budget-theme .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    color: var(--silver-light);
+    margin: 0.5rem 0 1rem 0;
+}
+
+body.budget-theme .page-subtitle {
+    font-size: 1rem;
+    color: rgba(212,212,212,0.6);
+    margin: 0;
+    font-weight: 300;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Gold divider */
+body.budget-theme .gold-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem auto;
+    max-width: 400px;
+}
+
+body.budget-theme .gold-rule::before,
+body.budget-theme .gold-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--silver));
+}
+
+body.budget-theme .gold-rule::after {
+    background: linear-gradient(to left, transparent, var(--silver));
+}
+
+body.budget-theme .gold-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--silver);
+    transform: rotate(45deg);
+}
+
+/* Content grid */
+body.budget-theme .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    animation: fadeUp 1s 0.3s ease both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Image panel */
+body.budget-theme .image-frame {
+    position: relative;
+    border: 1px solid rgba(168,168,168,0.3);
+    overflow: hidden;
+    background: #080808;
+}
+
+body.budget-theme .image-frame::before,
+body.budget-theme .image-frame::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+}
+
+body.budget-theme .image-frame::before {
+    top: 0; left: 0;
+    border-top: 2px solid var(--silver);
+    border-left: 2px solid var(--silver);
+}
+
+body.budget-theme .image-frame::after {
+    bottom: 0; right: 0;
+    border-bottom: 2px solid var(--silver);
+    border-right: 2px solid var(--silver);
+}
+
+body.budget-theme .corner-tr {
+    position: absolute;
+    top: 0; right: 0;
+    width: 24px; height: 24px;
+    border-top: 2px solid var(--silver);
+    border-right: 2px solid var(--silver);
+    z-index: 2;
+}
+
+body.budget-theme .corner-bl {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 24px; height: 24px;
+    border-bottom: 2px solid var(--silver);
+    border-left: 2px solid var(--silver);
+    z-index: 2;
+}
+
+body.budget-theme .gpu-image {
+    width: 100%;
+    display: block;
+    filter: brightness(0.9) contrast(1.1) saturate(0.85);
+    transition: opacity 0.28s ease, filter 0.4s, transform 0.6s;
+}
+
+body.budget-theme .image-frame:hover .gpu-image {
+    filter: brightness(1.05) contrast(1.1) saturate(1);
+    transform: scale(1.02);
+}
+
+body.budget-theme .image-caption {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+body.budget-theme .image-caption span {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--silver);
+    text-transform: uppercase;
+}
+
+body.budget-theme .image-caption p {
+    font-size: 0.82rem;
+    color: rgba(212,212,212,0.45);
+    margin-top: 0.2rem;
+    letter-spacing: 0.05em;
+}
+
+/* Specs panel */
+body.budget-theme .specs-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--silver);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+body.budget-theme .spec-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: unset;
+    line-height: unset;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+body.budget-theme .spec-row::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: rgba(168,168,168,0.06);
+    transition: width 0.3s ease;
+}
+
+body.budget-theme .spec-row:hover::before { width: 100%; }
+
+body.budget-theme .spec-row { cursor: pointer; }
+
+body.budget-theme .spec-row.active::before { width: 100%; background: rgba(168,168,168,0.12); }
+body.budget-theme .spec-row.active .spec-key { color: var(--silver-light); }
+body.budget-theme .spec-row.active .spec-bar { background: rgba(168,168,168,0.6); }
+
+body.budget-theme .spec-key {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--silver);
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1rem 1rem 1rem 0;
+    width: 110px;
+    flex-shrink: 0;
+}
+
+body.budget-theme .spec-bar {
+    width: 2px;
+    background: rgba(168,168,168,0.2);
+    margin: 0.6rem 1rem;
+    flex-shrink: 0;
+}
+
+body.budget-theme .spec-val {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--platinum);
+    padding: 1rem 0;
+    letter-spacing: 0.03em;
+    flex: 1;
+}
+
+/* Price block */
+body.budget-theme .price-block {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(168,168,168,0.25);
+    background: rgba(168,168,168,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.budget-theme .price-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(212,212,212,0.5);
+    text-transform: uppercase;
+}
+
+body.budget-theme .price-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--silver-light), var(--silver));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.04em;
+}
+
+/* CTA buttons */
+body.budget-theme .cta-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+body.budget-theme .btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, var(--silver) 0%, #808080 100%);
+    color: var(--black);
+    border: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.budget-theme .btn-primary:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+body.budget-theme .btn-ghost {
+    padding: 1rem 1.4rem;
+    border: 1px solid rgba(168,168,168,0.4);
+    background: transparent;
+    color: var(--silver);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+body.budget-theme .btn-ghost:hover {
+    background: rgba(168,168,168,0.08);
+}
+
+/* Performance badges */
+body.budget-theme .badges {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+body.budget-theme .badge {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--silver);
+    border: 1px solid rgba(168,168,168,0.3);
+    padding: 0.3rem 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+body.budget-theme .nav-logout-btn {
+    background: transparent;
+    border: 1px solid rgba(168,168,168,0.4);
+    color: var(--silver);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+body.budget-theme .nav-logout-btn:hover {
+    background: var(--silver);
+    color: var(--black);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body.budget-theme .content-grid { grid-template-columns: 1fr; }
+    body.budget-theme .navbar { padding: 0 1rem; gap: 1rem; }
+    body.budget-theme .page-title { font-size: 3rem; }
+}
+/* [End]
+    Author: Zhibin Wang
+    Assisted by Claude (Anthropic) for styling, 03/05/2026
+*/
